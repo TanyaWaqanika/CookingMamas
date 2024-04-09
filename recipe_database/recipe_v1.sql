@@ -2,21 +2,21 @@ create database repdb;
 
 use repdb;
 
--- needs fks, will add after all tables are done
+-- fks for duration table aren't working, can use ALTER TABLE to add them later
 create table recipe (
 recipeID int auto_increment primary key,
 recipeName varchar (250) not null,
 recipeDescription text,
 cuisineID int not null,
-overallDuration time,
-cookTime time not null,
+durationID int not null,
 prepTime time not null,
+cookTime time,
 servingSize int not null,
 Instructions text not null,
-foreign key (cuisineID) references cuisine (cuisineID),
-foreign key (overallDuration) references duration (overallDuration),
-foreign key (cookTime) references duration (cookTime),
-foreign key (prepTime) references duration (prepTime)
+foreign key (cuisineID) references cuisine (cuisineID)
+-- foreign key (durationID) references duration (durationID),
+-- foreign key (prepTime) references duration (prepTime),
+-- foreign key (cookTime) references duration (cookTime)
 ); 
 
 create table ingredient (
