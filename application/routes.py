@@ -31,3 +31,9 @@ def login():
         return redirect(url_for('all_products'))
     return render_template('login.html', title="Login")
 
+
+# TO DO Create the route that will help populate the options for the database form
+# Also to submit the data to the database - stored procedure?
+@app.route('/submitrecipe')
+def submit_recipe():
+    return render_template('submitRecipe.html', title='Recipe')
