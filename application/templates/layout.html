@@ -5,41 +5,65 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>{{title}} Page</title>
+
+    <!-- bootstrap CSS link ; note hierarchy order -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- CSS stylesheet(s) -->
+
     <link rel="stylesheet" href="../static/main_styles.css">
 </head>
 
-
+<!-- bootstrap JS link-->
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+<!-- navigation bar -->
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #98F5E1;">
     <div class="container">
+
+        <!-- Logo/hyperlink website name -->
         <a class="navbar-brand" href="/home">What's in <span>My Kitchen</span></a>
+
+        <!-- Search Bar ; currently non-functional -->
             <form action="#" class="searchform order-sm-start order-lg-last">
              <div class="form-group d-flex">
             <input type="text" class="form-control pl-3" placeholder="Search" aria-label="Search">
-             <button class="btn btn-outline-success" type="submit">Search<span class="fa fa-search"></span></button>
+
+                 <!-- search button -->
+                 <button class="btn btn-outline-success" type="submit">Search<span class="fa fa-search"></span></button>
             </div>
         </form>
+
+<!-- Collapsible/bootstrap responsive menu button ; only appears on mobile -->
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 <span class="fa fa-bars"></span> Menu
 </button>
 
+<!-- Collapses menu options on desktop -->
 <div class="collapse navbar-collapse">
 <ul class="navbar-nav m-auto">
+
+    <!-- Navbar options -->
 <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
+
+    <!-- Dropdown button -->
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
 <div class="dropdown-menu" aria-labelledby="dropdown04">
+
+    <!-- Dropdown options -->
 <a class="dropdown-item" href="#">Vegetarian</a>
 <a class="dropdown-item" href="#">Vegan</a>
 <a class="dropdown-item" href="#">Halal</a>
 <a class="dropdown-item" href="#">Pescatarian</a>
 </div>
 
+    <!-- Navbar Options -->
 </li>
 <li class="nav-item"><a href="/about/name" class="nav-link">About</a></li>
 <li class="nav-item"><a href="#" class="nav-link">Submit a Recipe</a></li>
@@ -49,10 +73,15 @@
 </div>
 </nav>
 
+<!-- end Navbar -->
 
+<!-- Jinja Inheritance bloock -->
     {% block body_content %}
     {% endblock %}
 </body>
+
+<!-- Footer -->
+
 <footer class="bg-body-tertiary fixed-bottom text-center">
   <!-- Grid container -->
   <div class="container p-4 pb-0">
