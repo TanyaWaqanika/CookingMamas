@@ -19,3 +19,15 @@ mycursor.execute("SHOW TABLES")
 
 for x in mycursor:
     print(x)
+
+#  Insert sample data from python
+
+sql = "INSERT INTO cuisine (cuisine_Type) VALUES (%s)"
+
+# content in val must be in DICT
+val = [("Italian")]
+mycursor.execute(sql, val)
+
+recipedb.commit()
+
+print(mycursor.rowcount, "record inserted.")

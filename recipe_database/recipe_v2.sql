@@ -20,6 +20,7 @@ foreign key (durationID) references duration(durationID)
 -- foreign key (cookTime) references duration (cookTime)
 ); 
 
+
 create table ingredient (
 ingredientID int auto_increment primary key,
 ingredientName varchar(50) not null
@@ -36,10 +37,16 @@ unitName varchar(50) not null
 -- quantityAmount float not null
 -- );
 
+
+
 create table cuisine (
 cuisineID int auto_increment primary key,
 cuisine_type varchar(100) not null
 );
+
+SELECT * 
+from cuisine;
+
 
 -- cookTime doesn't have [not null] in case some recipes don't require cooking
 -- need to double check if time or varchar data type would be more suitable for this table
@@ -68,6 +75,19 @@ allergyID int auto_increment primary key,
 allergyType varchar(50) not null
 );
 
+-- Allergy sample data test --
+INSERT INTO allergy (allergyType)
+VALUES 
+('Nuts'),
+('Shellfish'),
+('Dairy'),
+('Eggs'),
+('Wheat');
+
+-- View Allergy Table --
+SELECT *
+from allergy;
+
 create table tool (
 toolID int auto_increment primary key,
 toolName varchar(50) not null
@@ -93,16 +113,16 @@ userPassword varchar(50) not null
 -- bridge tables -- 
 create table userFavourite (
 userID int not null,
-foreign key (userID) references userInfo(userID),
 recipeID int not null,
+foreign key (userID) references userInfo(userID),
 foreign key (recipeID) references recipe(recipeID)
 );
 
 create table userAllergy (
 userID int not null,
-foreign key (userID) references userInfo(userID),
 allergyID int not null,
-foreign key (allergyID) references allergy(allergyID)
+foreign key (allergyID) references allergy(allergyID),
+foreign key (userID) references userInfo(userID)
 );
 
 create table userDietaryRequirement (
