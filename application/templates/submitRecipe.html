@@ -117,19 +117,29 @@
                     <br>
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
-                              <label for="ingredients" class="col-form-label">Select the ingredients, quantity and unit</label>
-                            <select class="form-select" aria-label="Default select example">
-                                  <option selected>Select your ingredients</option>
-                                  <option value="1">Egg</option>
-                                  <option value="2">Flour</option>
-                                  <option value="3">Butter</option>
-                            </select>
-                              <select class="form-select" aria-label="Default select example">
-                                  <option selected>Select your unit</option>
-                                  <option value="1">ml</option>
-                                  <option value="2">l</option>
-                                  <option value="3">tbsp</option>
-                            </select>
+                              <div class="d-flex">
+
+                                  <label for="ingredients" class="col-form-label">Select the ingredients, quantity and unit</label>
+                                <div class="p-2"><select class="form-select" aria-label="Default select example">
+                                                  <option selected>Select your ingredients</option>
+                                                  <option value="1">Egg</option>
+                                                  <option value="2">Flour</option>
+                                                  <option value="3">Butter</option>
+                                            </select>
+                                </div>
+                                  <label for="quantity" class="col-form-label">Select the quantity</label>
+                                  <div class="p-2">Quantity:</div>
+                                  <label for="unit" class="col-form-label">Select the unit</label>
+                                  <div class="p-2">
+                                      <select class="form-select" aria-label="Default select example">
+                                          <option selected>Select your unit</option>
+                                          <option value="1">ml</option>
+                                          <option value="2">l</option>
+                                          <option value="3">tbsp</option>
+                                    </select>
+                                 </div>
+
+</div>
                           </div>
                             <input type="submit" value="Submit">
 

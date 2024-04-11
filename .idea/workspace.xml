@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7738666b-d91d-4777-a0d0-f1f3325738ef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recipe_database/data_export_v1.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recipe_database/recipe_v2.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/CookingMamas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CookingMamas.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/dataAccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/dataAccess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/templates/submitRecipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/submitRecipe.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +34,7 @@
     "Python.routes.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging submitrecipe__draftkh",
+    "git-widget-placeholder": "submitrecipe__draftkh",
     "last_opened_file_path": "C:/Code/Getintotech2024/GIT_Demo_Flask_App"
   }
 }]]></component>
