@@ -1,13 +1,26 @@
+<!-- This is where Jinja2 inheritance code is denoted -->
+
 {% extends "layout.html" %}
 {% block body_content %}
-<div class="row mt-4 g-1 px-4 mb-5">
-<div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5">
+
+<!-- -->
+
+<!-- Option/Filter card block -->
+
+<!-- Meat block -->
+
+<div class="row mt-4 g-1 px-4 mb-5"> <!-- arranges cards in rows with spacing -->
+<div class="col-6 col-md-4 col-xl-2"> <!-- changes width of containers/cards; boostrap responsive -->
+  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <!-- creates cards and centres contents -->
     <img src="../static/images/meat_set.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/login">Meat</a></span>
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/login">Meat</a></span> <!-- text and hyperlink to relevant pages -->
     </div>
   </div>
 </div>
+
+<!-- Option/Filter card blocks; note these cards don't have a text hyperlink -->
+
+  <!-- Fruits card -->
 
 <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/fruits_basket.png" width="100">
@@ -16,12 +29,16 @@
   </div>
 </div>
 
+  <!-- Veg card -->
+
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/vegBouquet.png" width="95">
     <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Vegetables</span>
     </div>
   </div>
 </div>
+
+  <!-- Dairy card -->
 
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/milk_pack.png" width="90">
@@ -30,12 +47,16 @@
   </div>
 </div>
 
+  <!-- Grains card -->
+
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/wheat.png" width="100">
     <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Grains</span>
     </div>
   </div>
 </div>
+
+  <!-- herbs and spices card -->
 
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/meat_set.png" width="100">
@@ -47,5 +68,5 @@
 </div>
 
 
-
+<!-- end of unique page content -->
 {% endblock %}
