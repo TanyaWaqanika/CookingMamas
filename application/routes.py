@@ -37,3 +37,25 @@ def login():
 @app.route('/submitrecipe')
 def submit_recipe():
     return render_template('submitRecipe.html', title='Recipe')
+
+@app.route('/recipe/<int:recipe_id>')
+def recipe(recipe_id):
+    # This will be updated once the DB is up and running
+    # For demonstration, this is a mock recipe dictionary
+    mock_recipe = {
+        'title': 'Mock Recipe',
+        'description': 'This is a mock recipe.',
+        'cuisine': 'Italian',
+        'allergy': 'None',
+        'dietary_requirement': 'Vegetarian',
+        'overall_duration': '1 hour',
+        'preparation_time': '30 minutes',
+        'cook_time': '30 minutes',
+        'serving_size': '4',
+        'image': 'mock_recipe.jpg',
+        'ingredients': ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
+        'tools': 'Knife, Cutting Board',
+        'steps': ['Step 1: Do something', 'Step 2: Do something else']
+    }
+    return render_template('recipe.html', recipe=mock_recipe)
+
