@@ -8,7 +8,7 @@
             <p id="central-text">We want your recipes!</p>
             <br>
 <!--            target self loads response in the same window-->
-                <form action="" target="_self" autocomplete="on" method="post">
+                <form action="" target="_self" autocomplete="on">
                     <div class= 'error-message' id="message">
                         {{message}}
                      </div>
@@ -28,18 +28,21 @@
                              <textarea class="form-control" id="recipe_description" name="recipe_description" rows="3" cols="100"></textarea>
                         </div>
                       </div>
-
+                   </div>
                     <div class="row g-3 align-items-center">
                       <div class="col-auto">
                           <label for="dietarytype" class="col-form-label">Dietary requirements</label>
 <!--                          the {brackets below} allow for iterating through the dietary types we returned through the stored proc-->
 <!--                          It creates the tick box and label for each type-->
+
                           {% for dietary in dietarytype %}
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="dietarytype" value="option1">
                             <label class="form-check-label" for="inlineCheckbox1">{{dietary}}</label>
                         </div>
                          {% endfor %}
+                          </div>
+                    </div>
                     <br>
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
@@ -61,6 +64,7 @@
                               <label class="form-check-label" for="inlineCheckbox2">Eggs</label>
                             </div>
                           </div>
+                        </div>
                     <br>
                     <div class="row g-3 align-items-center">
                           <div class="col-auto">
@@ -82,6 +86,7 @@
                               <label class="form-check-label" for="inlineCheckbox2">Blender</label>
                             </div>
                           </div>
+                    </div>
                     <br>
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
@@ -111,11 +116,13 @@
                                           <option value="3">tbsp</option>
                                     </select>
                                  </div>
-
-</div>
-                          </div>
-                            <input type="submit" value="Submit">
-
+                                <button id="addRowBtn" onclick="addNewRow()">Add row</button>
+                              </div>
+                             </div>
+                            <br>
+                             <div id="containerIngredients">
+                             </div>
+<!--                            <input type="submit" value="Submit">-->
                 </form>
             </section>
         </div>
