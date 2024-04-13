@@ -32,12 +32,6 @@ def login():
     return render_template('login.html', title="Login")
 
 
-# TO DO Create the route that will help populate the options for the database form
-# Also to submit the data to the database - stored procedure?
-@app.route('/submitrecipe')
-def submit_recipe():
-    return render_template('submitRecipe.html', title='Recipe')
-
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     # This will be updated once the DB is up and running
@@ -59,3 +53,18 @@ def recipe(recipe_id):
     }
     return render_template('recipe.html', recipe=mock_recipe)
 
+
+from application.dataAccess import get_recipe_by_id
+
+
+@app.route('/recipe/<int:recipe_id>')
+def recipe(recipe_id):
+    recipe = get_recipe_by_id(recipe_id)
+    return render_template('recipe.html', recipe=recipe)
+
+
+# TO DO Create the route that will help populate the options for the database form
+# Also to submit the data to the database - stored procedure?
+@app.route('/submitrecipe')
+def submit_recipe():
+    return render_template('submitRecipe.html', title='Recipe')
