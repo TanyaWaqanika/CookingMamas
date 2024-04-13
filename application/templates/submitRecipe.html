@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+ <main>
+        <h1>Contact</h1>
+        <div class="container text-center">
+        <section>
+            <p id="central-text">We want your recipes!</p>
+            <br>
+<!--            target self loads response in the same window-->
+                <form action="" target="_self" autocomplete="on" method="post">
+                    <div class= 'error-message' id="message">
+                        {{message}}
+                     </div>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="fname" class="col-form-label">First name</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="text" id="fname" name="fname" class="form-control" aria-describedby="passwordHelpInline">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="lname" class="col-form-label">Last name</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="text" id="lname" name="lname" class="form-control" aria-describedby="passwordHelpInline">
+                      </div>
+                    </div>
+                    <br>
+<!--                    Password row -->
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="email" class="col-form-label">Email address</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="text" id="email" name="email" class="form-control" aria-describedby="passwordHelpInline">
+                      </div>
+                      <div class="col-auto">
+                        <span id="passwordHelpInline" class="form-text">
+                          Must be 8-20 characters long.
+                        </span>
+                      </div>
+                    </div>
+                    <br>
+                     <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <div class="mb-3">
+                            <label for="recipe_description" class="form-label">Describe your recipe</label>
+                             <textarea class="form-control" id="recipe_description" name="recipe_description" rows="3" cols="100"></textarea>
+                        </div>
+                      </div>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                          <label for="dietary" class="col-form-label">Dietary requirements</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Vegetarian</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                          <label class="form-check-label" for="inlineCheckbox2">Vegan</label>
+                        </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">Halal</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+                          <label class="form-check-label" for="inlineCheckbox2">Gluten free</label>
+                        </div>
+                      </div>
+                    <br>
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="allergy" class="col-form-label">Is your recipe suitable for these allergie? Tick all that apply</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Nuts</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Shellfish</label>
+                            </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Dairy</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Eggs</label>
+                            </div>
+                          </div>
+                    <br>
+                    <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="tools" class="col-form-label">Does your recipe require any tools? Tick all that apply</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Air fryer</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Deep fat fryer</label>
+                            </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Slow cooker</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Blender</label>
+                            </div>
+                          </div>
+                    <br>
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <div class="d-flex">
+
+                                  <label for="ingredients" class="col-form-label">Select the ingredients, quantity and unit</label>
+                                <div class="p-2"><select class="form-select" aria-label="Default select example">
+                                                  <option selected>Select your ingredients</option>
+                                                  <option value="1">Egg</option>
+                                                  <option value="2">Flour</option>
+                                                  <option value="3">Butter</option>
+                                            </select>
+                                </div>
+                                  <label for="quantity" class="col-form-label">Select the quantity</label>
+                                  <div class="p-2">Quantity:</div>
+                                  <label for="unit" class="col-form-label">Select the unit</label>
+                                  <div class="p-2">
+                                      <select class="form-select" aria-label="Default select example">
+                                          <option selected>Select your unit</option>
+                                          <option value="1">ml</option>
+                                          <option value="2">l</option>
+                                          <option value="3">tbsp</option>
+                                    </select>
+                                 </div>
+
+</div>
+                          </div>
+                            <input type="submit" value="Submit">
+
+                </form>
+            </section>
+        </div>
+    </main>
+{% endblock %}

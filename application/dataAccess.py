@@ -7,9 +7,11 @@ import mysql.connector
 recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
-    # password="Pa$$w0rd",
-    password="",
-    database="repdb"
+    # Windows password
+    password="Pa$$w0rd",
+    # Mac password 
+    #password="",
+    database="recipedb"
 )
 
 mycursor = recipedb.cursor()
@@ -33,12 +35,12 @@ def insert_sample_data():
     mycursor.close()
 def get_recipe_by_id(recipe_id):
     # Connect to the database
-    recipedb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Pa$$w0rd",
-        database="repdb"
-    )
+    # recipedb = mysql.connector.connect(
+    #     host="localhost",
+    #     user="root",
+    #     password="Pa$$w0rd",
+    #     database="repdb"
+    # )
 
     mycursor = recipedb.cursor(dictionary=True)
 
