@@ -7,7 +7,8 @@ import mysql.connector
 recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Pa$$w0rd",
+    # password="Pa$$w0rd",
+    password="",
     database="repdb"
 )
 
