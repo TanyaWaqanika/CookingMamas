@@ -19,6 +19,7 @@ mycursor = recipedb.cursor()
 
 #  Shows tables available in db in python terminal
 
+
 def show_tables():
     mycursor = recipedb.cursor()
     mycursor.execute("SHOW TABLES")
