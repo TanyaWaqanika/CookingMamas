@@ -5,27 +5,24 @@
         <h1>{{  recipe.recipeName }}</h1>
         <div class="recipe-details">
             <p><strong>Description:</strong> {{ recipe.recipeDescription }}</p>
-<!--            <p><strong>Cuisine:</strong> {{ recipe.cuisine }}</p>-->
-<!--            <p><strong>Allergy:</strong> {{ recipe.allergy }}</p>-->
-<!--            <p><strong>Dietary Requirement:</strong> {{ recipe.dietary_requirement }}</p>-->
-<!--            <p><strong>Overall Duration:</strong> {{ recipe.overall_duration }}</p>-->
-<!--            <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }}</p>-->
-<!--            <p><strong>Cook Time:</strong> {{ recipe.cook_time }}</p>-->
-<!--            <p><strong>Serving Size:</strong> {{ recipe.serving_size }}</p>-->
-<!--            <img src="{{ url_for('static', filename=recipe.image) }}" alt="{{ recipe.title }}">-->
-<!--            <h2>Ingredients</h2>-->
-<!--            <ul>-->
-<!--                {% for ingredient in recipe.ingredients %}-->
-<!--                <li>{{ ingredient }}</li>-->
-<!--                {% endfor %}-->
-<!--            </ul>-->
-<!--            <h2>Tools</h2>-->
-<!--            <p>{{ recipe.tools }}</p>-->
-<!--            <h2>Steps</h2>-->
-<!--            <ol>-->
-<!--                {% for step in recipe.steps %}-->
-<!--                <li>{{ step }}</li>-->
-<!--                {% endfor %}-->
+            <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
+            <img src="/static/{{ recipe.imageSource }}">
+            <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
+            <p><strong>Preparation Time:</strong> {{ recipe.prepTime }}</p>
+            <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
+            <p><strong>Serving Size:</strong> {{ recipe.servingSize }}</p>
+            <p><strong>Tool Required:</strong> {{ recipe.toolName }}</p>
+            <h2>Ingredients</h2>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient.ingredientName }} - {{ ingredient.quantity }} {{ ingredient.unitName }}</li>
+                {% endfor %}
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+                {% for step in recipe.steps %}
+                <li> {{ step.stepDescription }}</li>
+                {% endfor %}
             </ol>
         </div>
     </div>

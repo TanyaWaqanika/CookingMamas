@@ -9,7 +9,7 @@ recipedb = mysql.connector.connect(
     user="root",
     # password="Pa$$w0rd",
     password="",
-    database="repdb"
+    database="recipedb"
 )
 
 mycursor = recipedb.cursor()
@@ -32,26 +32,57 @@ def insert_sample_data():
     print(mycursor.rowcount, "record inserted.")
     mycursor.close()
 def get_recipe_by_id(recipe_id):
-    # Connect to the database
-    recipedb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Pa$$w0rd",
-        database="repdb"
-    )
-
     mycursor = recipedb.cursor(dictionary=True)
 
     # Query to fetch recipe details by ID
-    sql = "SELECT recipeName, recipeDescription FROM recipe WHERE recipeId = %s"
+    sql = """SELECT recipe.recipeName, recipe.recipeDescription, recipe.servingSize,
+    cuisine.cuisine_type, tool.toolName, 
+    image.imageSource, duration.overallDuration, duration.prepTime, duration.cookTime 
+    FROM recipe 
+    JOIN cuisine ON recipe.cuisineID = cuisine.cuisineID 
+    LEFT JOIN recipetoolrequirement ON recipe.recipeID = recipetoolrequirement.recipeID 
+    LEFT JOIN tool ON recipetoolrequirement.toolID = tool.toolID 
+    LEFT JOIN image ON recipe.recipeID = image.recipeID 
+    LEFT JOIN duration ON recipe.durationID = duration.durationID
+    WHERE recipe.recipeId = %s"""
     val = (recipe_id,)
     mycursor.execute(sql, val)
 
     # Fetch the recipe details
     recipe = mycursor.fetchone()
 
+    # Query to fetch steps for the recipe
+    steps_sql = """
+       SELECT stepNumber, stepDescription
+       FROM recipestep
+       WHERE recipeID = %s
+       ORDER BY stepNumber
+       """
+    mycursor.execute(steps_sql, val)
+
+    # Fetch the steps for the recipe
+    steps = mycursor.fetchall()
+
+    # Add steps to the recipe dictionary
+    recipe['steps'] = steps
+
+    # Query to fetch ingredients, quantity, and units for the recipe
+    ingredients_sql = """
+    SELECT ingredient.ingredientName, recipeingredientamount.quantity, unit.unitName
+    FROM recipeingredientamount
+    JOIN ingredient ON recipeingredientamount.ingredientID = ingredient.ingredientID
+    JOIN unit ON recipeingredientamount.unitID = unit.unitID
+    WHERE recipeingredientamount.recipeID = %s
+    """
+    mycursor.execute(ingredients_sql, val)
+
+    # Fetch all ingredients with quantities and units
+    ingredients = mycursor.fetchall()
+
+    # Add ingredients to the recipe dictionary
+    recipe['ingredients'] = ingredients
+
     # Close database connection
     mycursor.close()
-    recipedb.close()
 
     return recipe
