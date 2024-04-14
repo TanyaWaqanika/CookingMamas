@@ -122,3 +122,12 @@ bg-body-tertiary{
 background-color: #CCCFFB;
 }
 
+.success{
+    background: #8bffff;
+}
+.successtitle{
+    text-align: center;
+    color: cfbaf0;
+    text-shadow: 2px 2px;
+}
+

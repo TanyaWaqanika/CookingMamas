@@ -32,7 +32,6 @@ def login():
     return render_template('login.html', title="Login")
 
 
-g
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
@@ -46,3 +45,8 @@ def submit_recipe():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
     dietarytype = get_dietary_types()
     return render_template('submitRecipe.html', title='Recipe', dietarytype = dietarytype)
+
+
+@app.route('/submitsuccess')
+def success_submit():
+    return render_template('submitRecipeSuccess.html', title='Success')
