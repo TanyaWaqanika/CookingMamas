@@ -6,6 +6,7 @@ html {
 body {
     background-color: #FBF8CC;
     margin-bottom: 20px; /* Height of the footer */
+    padding-left: 20px;
 }
 
 footer {
@@ -16,7 +17,7 @@ footer {
   }
 
 h1 {
-    font-family:monospace;
+    font-family: verdana;
     background-color:rgba(255,255,255,.8);
      text-align: center;
  }
@@ -120,3 +121,4 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 bg-body-tertiary{
 background-color: #CCCFFB;
 }
+
