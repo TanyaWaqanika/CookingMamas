@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+ <main>
+        <h1>Contact</h1>
+        <div class="container">
+        <section>
+            <p id="central-text">We want your recipes!</p>
+            <br>
+<!--            target self loads response in the same window-->
+                <form action="" target="_self" autocomplete="on" method="POST">
+                    <div class= 'error-message' id="message">
+                        {{message}}
+                     </div>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="recipename" class="col-form-label">Recipe name</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="text" id="recipename" name="recipename" class="form-control" aria-describedby="recipename">
+                      </div>
+                    </div>
+                    <br>
+                   <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <div class="mb-3">
+                            <label for="recipe_description" class="form-label">Describe your recipe</label>
+                             <textarea class="form-control" id="recipe_description" name="recipe_description" rows="3" cols="100"></textarea>
+                        </div>
+                      </div>
+                   </div>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                          <label for="dietarytype" class="col-form-label">Dietary requirements</label>
+<!--                          the {brackets below} allow for iterating through the dietary types we returned through the stored proc-->
+<!--                          It creates the tick box and label for each type-->
+
+                          {% for dietary in dietarytype %}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="dietarytype" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">{{dietary}}</label>
+                        </div>
+                         {% endfor %}
+                          </div>
+                    </div>
+                    <br>
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="allergy" class="col-form-label">Is your recipe suitable for these allergie? Tick all that apply</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Nuts</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Shellfish</label>
+                            </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Dairy</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Eggs</label>
+                            </div>
+                          </div>
+                        </div>
+                    <br>
+                    <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="tools" class="col-form-label">Does your recipe require any tools? Tick all that apply</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Air fryer</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Deep fat fryer</label>
+                            </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Slow cooker</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+                              <label class="form-check-label" for="inlineCheckbox2">Blender</label>
+                            </div>
+                          </div>
+                    </div>
+                    <br>
+<!--                    row for the ingredients, quantity and units-->
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <div class="d-flex">
+
+                                  <label for="ingredients" class="col-form-label">Select the ingredients, quantity and unit</label>
+                                <div class="p-2"><select class="form-select" aria-label="Default select example">
+                                                  <option selected>Select your ingredients</option>
+                                                  <option value="1">Egg</option>
+                                                  <option value="2">Flour</option>
+                                                  <option value="3">Butter</option>
+                                            </select>
+                                </div>
+                                    <div class="p-2">
+                                        <label for="quantity" class="col-form-label">Select the quantity</label>
+                                    </div>
+<!--                                Changed quantity box to text and added min 0 so it didnt present negative numbers-->
+                                  <div class="col-auto">
+                                    <input type="number" min ='0' id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
+                                    </div>
+                                  <label for="unit" class="col-form-label">Select the unit</label>
+                                  <div class="p-2">
+                                      <select class="form-select" aria-label="Default select example">
+                                          <option selected>Select your unit</option>
+                                          <option value="1">ml</option>
+                                          <option value="2">l</option>
+                                          <option value="3">tbsp</option>
+                                    </select>
+                                 </div>
+                                <button id="addRowBtn" onclick="addNewRow()">Add row</button>
+                              </div>
+                             </div>
+                            <br>
+                             <div id="containerIngredients">
+                             </div>
+                            <input type="submit" value="Submit">
+                </form>
+            </section>
+        </div>
+    </main>
+{% endblock %}

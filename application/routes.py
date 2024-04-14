@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect, session
-
+from application.dataAccess import get_recipe_by_id, get_dietary_types
 from application import app
 
 
@@ -32,9 +32,17 @@ def login():
     return render_template('login.html', title="Login")
 
 
-from application.dataAccess import get_recipe_by_id
 
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
-    recipe = get_recipe_by_id(recipe_id)
-    return render_template('recipe.html', recipe=recipe)
+    recipes = get_recipe_by_id(recipe_id)
+    return render_template('recipe.html', recipe=recipes)
+
+
+# TO DO Create the route that will help populate the options for the database form
+# Also to submit the data to the database - stored procedure?
+@app.route('/submitrecipe')
+def submit_recipe():
+    # uses the function in data access to get the list of dietary types and assigns to variable dietary type
+    dietarytype = get_dietary_types()
+    return render_template('submitRecipe.html', title='Recipe', dietarytype = dietarytype)
