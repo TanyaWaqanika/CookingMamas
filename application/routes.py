@@ -32,7 +32,7 @@ def login():
     return render_template('login.html', title="Login")
 
 
-g
+
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
