@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect, session
-from application.dataAccess import get_recipe_by_id
+from application.dataAccess import get_recipe_by_id, get_dietary_types
 from application import app
 
 
@@ -32,28 +32,7 @@ def login():
     return render_template('login.html', title="Login")
 
 
-# @app.route('/recipe/<int:recipe_id>')
-# def recipe(recipe_id):
-#     # This will be updated once the DB is up and running
-#     # For demonstration, this is a mock recipe dictionary
-#     mock_recipe = {
-#         'title': 'Mock Recipe',
-#         'description': 'This is a mock recipe.',
-#         'cuisine': 'Italian',
-#         'allergy': 'None',
-#         'dietary_requirement': 'Vegetarian',
-#         'overall_duration': '1 hour',
-#         'preparation_time': '30 minutes',
-#         'cook_time': '30 minutes',
-#         'serving_size': '4',
-#         'image': 'mock_recipe.jpg',
-#         'ingredients': ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
-#         'tools': 'Knife, Cutting Board',
-#         'steps': ['Step 1: Do something', 'Step 2: Do something else']
-#     }
-#     return render_template('recipe.html', recipe=mock_recipe)
-
-
+g
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
@@ -64,4 +43,6 @@ def recipe(recipe_id):
 # Also to submit the data to the database - stored procedure?
 @app.route('/submitrecipe')
 def submit_recipe():
-    return render_template('submitRecipe.html', title='Recipe')
+    # uses the function in data access to get the list of dietary types and assigns to variable dietary type
+    dietarytype = get_dietary_types()
+    return render_template('submitRecipe.html', title='Recipe', dietarytype = dietarytype)
