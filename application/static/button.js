@@ -6,7 +6,7 @@ document.getElementById('addRowBtn').addEventListener('click', function(event) {
     var container = document.getElementById('containerIngredients');
 //    adding one row to the container
     container.append(addNewRow(count));
-   });
+    });
 
 
 function addNewRow(count){
@@ -84,4 +84,36 @@ newRow.innerHTML = `
             console.log("New row added!");
 }
 
+document.getElementById('addRowBtnStep').addEventListener('click', function(event) {event.preventDefault();
+//    console.log("Button clicked!");
+var count =1;
+var containerstep = document.getElementById('containerStep');
+    containerstep.append(addNewRowStep(count));
+    });
 
+function addNewRowStep(count){
+//creates a new row starting off with the first div from the row
+    var newRowStep = document.createElement("div")
+        newRowStep.classList.add("row", "g-3", "align-items-center")
+
+    newRowStep.innerHTML = `
+        <div class="col-auto">
+               <div class="mb-3">
+                    <div class="d-flex">
+                    <label for="recipe_step" class="form-label">Step Number</label>
+                    <input type="number" min="1" id="step" name="Step" class="form-control" aria-describedby="Step" style="width: 100px;">
+                          <textarea class="form-control" id="recipe_Step" name="recipe_step" rows="3" cols="100"></textarea>
+               </div>
+            </div>
+        </div>
+    `;
+
+//returning the new row which can then be appended when the function is run
+     return(newRowStep)
+     console.log("New row added!");
+}
+
+document.getElementById('unhideRowBtn').addEventListener('click', function(event){event.preventDefault();
+    var hiddenRow = document.getElementById('hiddenRow');
+    hiddenRow.style.display = 'flex';
+});

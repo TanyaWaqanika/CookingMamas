@@ -85,7 +85,7 @@
                             <div class="d-flex">
                                 <div class="p-2">
                                     <label for="ingredientname" class="col-form-label">Select an ingredient</label>
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" id="ingredientname">
 <!--                                creates a dropdown list-->
                                         <option selected>Select an ingredient</option>
 <!--                                    This is the default option displayed when the dropdown list is opened. The selected attribute makes it the default selected option-->
@@ -109,7 +109,7 @@
                         <div class="col-auto">
                             <div class="p-2">
                                 <label for="unitname" class="col-form-label">Select a unit</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" id="unitname">
                                     <option selected>Select a unit</option>
                                     {% for unit in unitname %}
                                         <option value="{{ unit }}">{{ unit }}</option>
@@ -125,6 +125,64 @@
 
                     <br>
                     <div id="containerIngredients">
+                    </div>
+                    <div id="hiddenRow" class="row g-3 align-items-center" style="display: none;">
+                        <div class="col-auto">
+                            <div class="d-flex">
+                                <div class="p-2">
+                                    <label for="ingredientname" class="col-form-label">Select an ingredient</label>
+                                    <select class="form-select" aria-label="Default select example" id="ingredientname">
+<!--                                creates a dropdown list-->
+                                        <option selected>Select an ingredient</option>
+<!--                                    This is the default option displayed when the dropdown list is opened. The selected attribute makes it the default selected option-->
+                                        {% for ingredient in ingredientname %}
+<!--                                    adding a for loop that iterates through all the values in ingredient-->
+                                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+<!--                                        creates option element for each value in ingredientname-->
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="p-2">
+                                <label for="quantity" class="col-form-label">Quantity</label>
+<!--                                step added so that quantity can be in decimal as well as integer-->
+<!--                                changes min to 1 so that users unable to choose 0 for any quantity-->
+                                <input type="number" min="1" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="p-2">
+                                <label for="unitname" class="col-form-label">Select a unit</label>
+                                <select class="form-select" aria-label="Default select example" id="unitname">
+                                    <option selected>Select a unit</option>
+                                    {% for unit in unitname %}
+                                        <option value="{{ unit }}">{{ unit }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <button id="unhideRowBtn">Unhide row</button>
+                    </div>
+                    <h5>Add the steps for completing your recipe</h5>
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                        <div class="mb-3">
+                            <div class="d-flex">
+                            <label for="recipe_step" class="form-label">Step Number</label>
+                            <input type="number" min="1" id="step" name="Step" class="form-control small-box" aria-describedby="Step" style="width: 100px;">
+                             <textarea class="form-control" id="recipe_Step" name="recipe_step" rows="3" cols="100"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="p-2">
+                        <button id="addRowBtnStep" onclick="addNewRowStep()">Add row</button>
+                    </div>
+                    <br>
+                    <div id="containerStep">
                     </div>
                     <input type="submit" value="Submit">
                 </form>

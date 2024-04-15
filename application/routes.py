@@ -39,6 +39,7 @@ def recipe(recipe_id):
     return render_template('recipe.html', recipe=recipes)
 
 
+
 # TO DO Create the route that will help populate the options for the database form
 # Also to submit the data to the database - stored procedure?
 @app.route('/submitrecipe')
