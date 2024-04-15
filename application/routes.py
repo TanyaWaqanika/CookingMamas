@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect, session
-from application.dataAccess import get_recipe_by_id, get_dietary_types
+from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, get_ingredient_names, get_unit_types
 from application import app
 
 
@@ -44,7 +44,12 @@ def recipe(recipe_id):
 def submit_recipe():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
     dietarytype = get_dietary_types()
-    return render_template('submitRecipe.html', title='Recipe', dietarytype = dietarytype)
+    allergytype = get_allergy_types()
+    toolname = get_tool_names()
+    ingredientname = get_ingredient_names()
+    unitname = get_unit_types()
+    return render_template('submitRecipe.html', title='Recipe', dietarytype=dietarytype, allergytype=allergytype,
+                       toolname=toolname, ingredientname=ingredientname, unitname=unitname)
 
 
 @app.route('/submitsuccess')

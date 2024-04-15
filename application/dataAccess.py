@@ -8,13 +8,14 @@ recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
     # Windows password
-    password="Pa$$w0rd",
+    # password="Pa$$w0rd",
     # Mac password 
-    #password="",
+    password="",
     database="recipedb"
 )
 
 mycursor = recipedb.cursor()
+
 
 #  Shows tables available in db in python terminal
 
@@ -35,8 +36,8 @@ def insert_sample_data():
     recipedb.commit()
     print(mycursor.rowcount, "record inserted.")
     mycursor.close()
-    
-    
+
+
 def get_recipe_by_id(recipe_id):
     # Connect to the database
     # recipedb = mysql.connector.connect(
@@ -67,21 +68,44 @@ def get_recipe_by_id(recipe_id):
 def get_dietary_types():
     cursor = recipedb.cursor()
     sql = "SELECT dietaryType from dietaryrequirement"
-    cursor.execute(sql,)
+    cursor.execute(sql, )
     # Gets the first element of each row - means it doesn't show the ('') on the front end
     results = [row[0] for row in cursor.fetchall()]
     return results
 
 
-print(get_dietary_types())
+def get_allergy_types():
+    cursor = recipedb.cursor()
+    sql = "SELECT allergyType from allergy"
+    cursor.execute(sql, )
+    results = [row[0] for row in cursor.fetchall()]
+    return results
 
-# def get_allergy_names()
 
-# def get_tool_names()
+def get_tool_names():
+    cursor = recipedb.cursor()
+    sql = "SELECT toolName from tool"
+    cursor.execute(sql, )
+    results = [row[0] for row in cursor.fetchall()]
+    return results
 
-# def get_ingredients_names()
 
-# def get_unit_types()
+def get_ingredient_names():
+    cursor = recipedb.cursor()
+    sql = "SELECT ingredientName from ingredient"
+    cursor.execute(sql, )
+    results = [row[0] for row in cursor.fetchall()]
+    return results
+
+
+def get_unit_types():
+    cursor = recipedb.cursor()
+    sql = "SELECT unitName from unit"
+    cursor.execute(sql, )
+    results = [row[0] for row in cursor.fetchall()]
+    return results
+
+
 # def insert_recipe()
 #     args = (,)
 #     # flask interacting with mysql db
