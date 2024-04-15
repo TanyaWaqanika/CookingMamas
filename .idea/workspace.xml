@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7738666b-d91d-4777-a0d0-f1f3325738ef" name="Changes" comment="" />
+    <list default="true" id="7738666b-d91d-4777-a0d0-f1f3325738ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/CookingMamas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CookingMamas.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/about.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,8 +33,8 @@
     "Python.routes.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "image__database__creation",
-    "last_opened_file_path": "C:/Code/Getintotech2024/GIT_Demo_Flask_App"
+    "git-widget-placeholder": "paulene",
+    "last_opened_file_path": "C:/skygit_exercises/group_project/CookingMamas"
   }
 }]]></component>
   <component name="RecentsManager">
