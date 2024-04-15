@@ -113,6 +113,7 @@ function addNewRowStep(count){
      console.log("New row added!");
 }
 
+// unhiding a row instead of creating a new row each time it already exists 
 document.getElementById('unhideRowBtn').addEventListener('click', function(event){event.preventDefault();
     var hiddenRow = document.getElementById('hiddenRow');
     hiddenRow.style.display = 'flex';
