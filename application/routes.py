@@ -1,5 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
-from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, get_ingredient_names, get_unit_types
+from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
+    get_ingredient_names, get_unit_types, get_recipe_title, get_recipe_desc
 from application import app
 
 
@@ -32,7 +33,6 @@ def login():
     return render_template('login.html', title="Login")
 
 
-
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
@@ -51,7 +51,15 @@ def submit_recipe():
     ingredientname = get_ingredient_names()
     unitname = get_unit_types()
     return render_template('submitRecipe.html', title='Recipe', dietarytype=dietarytype, allergytype=allergytype,
-                       toolname=toolname, ingredientname=ingredientname, unitname=unitname)
+                           toolname=toolname, ingredientname=ingredientname, unitname=unitname)
+
+
+@app.route('/search')
+def search():
+    recipename = get_recipe_title()
+    recipedesc = get_recipe_desc()
+
+    return render_template('search.html', recipename=recipename, recipedesc=recipedesc)
 
 
 @app.route('/submitsuccess')

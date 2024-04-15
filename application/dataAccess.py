@@ -95,6 +95,24 @@ def get_recipe_by_id(recipe_id):
     return recipe
 
 
+def get_recipe_title():
+    cursor = recipedb.cursor()
+    sql = "SELECT recipeName from recipe"
+    cursor.execute(sql)
+    recipe_titles = [row[0] for row in cursor.fetchall()]
+    cursor.close()  # Close the cursor
+    return recipe_titles
+
+
+def get_recipe_desc():
+    cursor = recipedb.cursor()
+    sql = "SELECT recipeDescription from recipe"
+    cursor.execute(sql)
+    recipe_desc = [row[0] for row in cursor.fetchall()]
+    cursor.close()  # Close the cursor
+    return recipe_desc
+
+
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():
     cursor = recipedb.cursor()
@@ -135,7 +153,6 @@ def get_unit_types():
     cursor.execute(sql, )
     results = [row[0] for row in cursor.fetchall()]
     return results
-
 
 # def insert_recipe()
 #     args = (,)
