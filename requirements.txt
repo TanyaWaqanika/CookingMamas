@@ -1,3 +1,4 @@
 Flask
 wtforms
 mysql-connector-python
+Flask-SQLALchemy
