@@ -58,8 +58,8 @@ def submit_recipe():
 def search():
     recipename = get_recipe_title()
     recipedesc = get_recipe_desc()
-
-    return render_template('search.html', recipename=recipename, recipedesc=recipedesc)
+    ingredientname = get_ingredient_names()
+    return render_template('search.html', recipename=recipename, recipedesc=recipedesc, ingredientname=ingredientname)
 
 
 @app.route('/submitsuccess')

@@ -2,19 +2,38 @@
 
 {% block body_content %}
 
-{% for recipe in recipename %}
+<div class="col-auto">
+    <label for="ingredientname" class="col-form-label">Ingredients Required:  </label>
 
-<div class="row mt-4 g-1 px-4 mb-5"> <!-- arranges cards in rows with spacing -->
-<div class="col-6 col-md-4 col-xl-2"> <!-- changes width of containers/cards; boostrap responsive -->
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <!-- creates cards and centres contents -->
-    <img src="../static/images/meat_set.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">
 
-        <a href="/login">
+        {% for ingredient in ingredientname|sort %}
 
-        </a><h1>{{ recipe }}</h1></span> <!-- text and hyperlink to relevant pages -->
+        <input type="hidden" id="get_ingredients" value="{{ ingredient }}">
+        <div id="buttons" class="d-flex">
+                <button class="button-value">{{ ingredient }}</button>
+        </div>
+
+        {% endfor %}
+
+    <br>
+  {% for ingredient in ingredientname|sort %}
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" value="">
+        <label class="form-check-label" id="ingredientname"  for="ingredientname">{{ ingredient }}</label>
     </div>
-  </div>
-</div>
  {% endfor %}
+
+
+</div>
+
+
+{% for name in recipename %}
+<input type="hidden" id="get_recipes" value="{{ name }}">
+        <h1>{{ name }}  </h1>
+{% for desc in recipedesc %}
+{{ desc }}
+{% endfor %}
+{% endfor %}
+
+<script src="../static/filter.js"></script>
 {% endblock %}

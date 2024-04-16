@@ -89,7 +89,7 @@
 <!--                                creates a dropdown list-->
                                         <option selected>Select an ingredient</option>
 <!--                                    This is the default option displayed when the dropdown list is opened. The selected attribute makes it the default selected option-->
-                                        {% for ingredient in ingredientname %}
+                                        {% for ingredient in ingredientname|sort %}
 <!--                                    adding a for loop that iterates through all the values in ingredient-->
                                             <option value="{{ ingredient }}">{{ ingredient }}</option>
 <!--                                        creates option element for each value in ingredientname-->
@@ -98,6 +98,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-auto">
                             <div class="p-2">
                                 <label for="quantity" class="col-form-label">Quantity</label>
@@ -106,6 +107,7 @@
                                 <input type="number" min="1" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
                             </div>
                         </div>
+
                         <div class="col-auto">
                             <div class="p-2">
                                 <label for="unitname" class="col-form-label">Select a unit</label>
