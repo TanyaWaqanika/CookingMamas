@@ -154,6 +154,26 @@ def get_unit_types():
     results = [row[0] for row in cursor.fetchall()]
     return results
 
+def get_cuisine_types():
+    cursor = recipedb.cursor()
+    sql = "SELECT cuisine_type from cuisine"
+    cursor.execute(sql, )
+    # Gets the first element of each row - means it doesn't show the ('') on the front end
+    results = [row[0] for row in cursor.fetchall()]
+    return results
+
+# def get_duration():
+#     cursor = recipedb.cursor()
+#     sql = "SELECT prepTime, cookTime from duration"
+#     cursor.execute(sql, )
+#     # Gets the first element of each row - means it doesn't show the ('') on the front end
+# 
+#     results = cursor.fetchall()
+#     return results
+# 
+# print(get_duration())
+
+
 # def insert_recipe()
 #     args = (,)
 #     # flask interacting with mysql db

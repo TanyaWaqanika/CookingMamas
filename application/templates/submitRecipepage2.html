@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+ <main>
+    <div class="container">
+                <section>
+                    <h3 id="central-text">We want your recipes!</h3>
+                    <br>
+    <!--            target self loads response in the same window-->
+                    <form action="" target="_self" autocomplete="on" method="POST">
+                        <div class= 'error-message' id="message">
+                            {{message}}
+                        </div>
+
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="dietarytype" class="col-form-label">Dietary requirements:  </label>
+    <!--                          the {brackets below} allow for iterating through the dietary types we returned through the stored proc-->
+    <!--                          It creates the tick box and label for each type-->
+
+                              {% for dietary in dietarytype %}
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <label class="form-check-label" id="dietarytype"  for="dietarytype">{{dietary}}</label>
+                              </div>
+                              {% endfor %}
+
+                          </div>
+                        </div>
+                        <br>
+
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                              <label for="allergytype" class="col-form-label">Allergy Type:  </label>
+
+                              {% for allergy in allergytype %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label"  id="allergytype"  for="allergytype">{{allergy}}</label>
+                                </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+
+                        <div class="row g-3 align-items-center">
+                            <diV class="col-auto">
+                                <label for="toolname" class="col-form-label">Tools Required:  </label>
+
+                              {% for tool in toolname %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label" id="toolname"  for="toolname">{{tool}}</label>
+                                </div>
+                             {% endfor %}
+                            </diV>
+                        </div>
+                        <br>
+
+                        <button type="submit">Next</button>
+                    </form>
+                </section>
+            </div>
+
+         </main>
+
+{% endblock %}
