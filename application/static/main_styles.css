@@ -150,3 +150,29 @@ color: #CCCFFB;
   gap: 5px;
   padding: 16px 0 10px;
  }
+
+ #durationtime {
+  font-family: "Lobster", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  border-collapse: collapse;
+  width: 50%;
+  background: #d0f4de;
+}
+
+#durationtime td, #durationtime th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#durationtime tr:nth-child(even){background-color: #b8c0ff;}
+
+#durationtime tr:hover {background-color: #ffd6ff;}
+
+#durationtime th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #a9def9;
+  color: #ff70a6;
+}

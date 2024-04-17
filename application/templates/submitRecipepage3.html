@@ -1,66 +1,39 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
- <main>
-     <main>
-        <h1>Add your own recipe!</h1>
-        <div class="container">
-            <section>
-                <h3 id="central-text">We want your recipes!</h3>
-                <br>
-<!--            target self loads response in the same window-->
-                <form action="" target="_self" autocomplete="on" method="POST">
-                    <div class= 'error-message' id="message">
-                        {{message}}
+<main>
+    <h1>Add your own recipe!</h1>
+    <div class="container">
+        <section>
+            <h3 id="central-text">We want your recipes!</h3>
+            <br>
+            <!-- Table to display added ingredients -->
+            <table id="ingredientTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ingredient in session['addedingredients'] %}
+                    <tr>
+                        <td>{{ ingredient['ingredient'] }}</td>
+                        <td>{{ ingredient['quantity'] }}</td>
+                        <td>{{ ingredient['unit'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ url_for('addingredients') }}">Add ingredients</a>
+            <br>
+            <br>
+                <button type="submit">Next</button>
+            </form>
+        </section>
+    </div>
 
-<!--                Input ingredients, quantity and unit for recipe -->
-<!--                Dynamically populating all ingredients and unit types for users to select-->
-                    <h5>Add the ingredients for your recipe</h5>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <div class="d-flex">
-                                <div class="p-2">
-                                    <label for="ingredientname" class="col-form-label">Select an ingredient</label>
-                                    <select class="form-select" aria-label="Default select example" id="ingredientname">
-<!--                                creates a dropdown list-->
-                                        <option selected>Select an ingredient</option>
-<!--                                    This is the default option displayed when the dropdown list is opened. The selected attribute makes it the default selected option-->
-                                        {% for ingredient in ingredientname|sort %}
-<!--                                    adding a for loop that iterates through all the values in ingredient-->
-                                            <option value="{{ ingredient }}">{{ ingredient }}</option>
-<!--                                        creates option element for each value in ingredientname-->
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+</main>
+{% endblock %}
 
-                        <div class="col-auto">
-                            <div class="p-2">
-                                <label for="quantity" class="col-form-label">Quantity</label>
-<!--                                step added so that quantity can be in decimal as well as integer-->
-<!--                                changes min to 1 so that users unable to choose 0 for any quantity-->
-                                <input type="number" min="1" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
-                            </div>
-                        </div>
-
-                        <div class="col-auto">
-                            <div class="p-2">
-                                <label for="unitname" class="col-form-label">Select a unit</label>
-                                <select class="form-select" aria-label="Default select example" id="unitname">
-                                    <option selected>Select a unit</option>
-                                    {% for unit in unitname %}
-                                        <option value="{{ unit }}">{{ unit }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit">Next</button>
-                </form>
-            </section>
-        </div>
-
-     </main>
-
-     {% endblock %}

@@ -1,12 +1,7 @@
 //getting the element in the html with the ID, when that element is clicked it will run the addNewRow function
 document.getElementById('addRowBtn').addEventListener('click', function(event) {event.preventDefault();
 //    console.log("Button clicked!");
-    var count =1;
-//    getting the container where the row will be added
-    var container = document.getElementById('containerIngredients');
-//    adding one row to the container
-    container.append(addNewRow(count));
-    });
+
 
 
 function addNewRow(count){

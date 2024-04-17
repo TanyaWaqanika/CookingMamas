@@ -1,5 +1,5 @@
 import mysql.connector
-
+import datetime
 # connects website to database, database is called repdb bc I had a split second of dyslexia and forgot how recipe is
 # spelt smh
 
@@ -162,15 +162,34 @@ def get_cuisine_types():
     results = [row[0] for row in cursor.fetchall()]
     return results
 
-# def get_duration():
-#     cursor = recipedb.cursor()
-#     sql = "SELECT prepTime, cookTime from duration"
-#     cursor.execute(sql, )
-#     # Gets the first element of each row - means it doesn't show the ('') on the front end
-# 
-#     results = cursor.fetchall()
-#     return results
-# 
+
+def format_timedelta(value):
+    if value is None:
+        return ''
+    hours, remainder = divmod(value.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return '{:02}:{:02}:{:02}'.format(hours, minutes, seconds)
+
+def get_duration():
+    cursor = recipedb.cursor()
+    sql = "SELECT prepTime, cookTime from duration"
+    cursor.execute(sql, )
+    # Gets the first element of each row - means it doesn't show the ('') on the front end
+
+    results = cursor.fetchall()
+    formatted_results = []
+    for row in results:
+        formatted_row = {
+            'prepTime': format_timedelta(row[0]),
+            'cookTime': format_timedelta(row[1])
+        }
+        formatted_results.append(formatted_row)
+
+    return formatted_results
+
+print(get_duration())
+
+
 # print(get_duration())
 
 

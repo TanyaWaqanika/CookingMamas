@@ -49,16 +49,30 @@
                     </div>
                     <br>
 
-                    <div class="row g-3 align-items-center">
-                        <diV class="col-auto">
-                            <label for="serving" class="col-form-label">How many people does it serve:  </label>
-<!--                                step added so that quantity can be in decimal as well as integer-->
-<!--                                changes min to 1 so that users unable to choose 0 for any quantity-->
-                                <input type="number" min="1" step="1" id="serving" name="serving" class="form-control" aria-describedby="serving">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="serving" class="col-form-label">How many people does it serve:  </label>
+    <!--                                step added so that quantity can be in decimal as well as integer-->
+    <!--                                changes min to 1 so that users unable to choose 0 for any quantity-->
+                                    <input type="number" min="1" step="1" id="serving" name="serving" class="form-control" aria-describedby="serving">
 
                             </div>
                         </diV>
-                    </div>
+                    <br>
+                    <h5>Choose the time it takes to make your recipe</h5>
+                    <table id="durationtime">
+                            <tr>
+                                <th>Preparation Time</th>
+                                <th>Cooking Time</th>
+                            </tr>
+                            {% for duration in durationdata %}
+                            <tr>
+                                <td>{{ duration.prepTime }}</td>
+                                <td>{{ duration.cookTime }}</td>
+                                <td><input name="duration" class="form-check-input" type="checkbox" value="{{ duration.prepTime }}{{ duration.cookTime }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     <br>
 
                     <button type="submit">Next</button>

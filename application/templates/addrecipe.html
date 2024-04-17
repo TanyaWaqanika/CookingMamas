@@ -1,0 +1,38 @@
+ {% extends "layout.html" %}
+<!--Created a new page that could be linked off to where the user can select their ingredient info and then it should submit back to the submit recipe table-->
+{% block body_content %}
+<main>
+    <div>
+        <section>
+    <!-- Form to add a new ingredient -->
+            <form method="POST" action="{{ url_for('addingredients') }}">
+                <h2>Add Ingredient</h2>
+                <div class="form-group">
+                    <label for="ingredientname">Ingredient:</label>
+                    <select class="form-control" id="ingredientname" name="ingredientname">
+                        {% for ingredient in ingredientname %}
+                        <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+<!--                 step added so that quantity can be in decimal as well as integer&ndash;&gt;-->
+<!--                changes min to 1 so that users unable to choose 0 for any quantity-->
+                    <input type="number" min="0.25" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
+                </div>
+                <div class="form-group">
+                    <label for="unitname">Unit:</label>
+                    <select class="form-control" id="unitname" name="unitname">
+                        {% for unit in unitname %}
+                        <option value="{{ unit }}">{{ unit }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+    </div>
+</main>
+{% endblock %}
