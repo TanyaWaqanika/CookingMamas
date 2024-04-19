@@ -64,3 +64,7 @@ def search():
 @app.route('/submitsuccess')
 def success_submit():
     return render_template('submitRecipeSuccess.html', title='Success')
+
+@app.route('/recipe')
+def recipe_landing():
+    return render_template('recipeLanding.html')
