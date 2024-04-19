@@ -89,8 +89,6 @@ def submitrecipepage2():
 # got myself all confused by the sessions so between 3 and add recipe needs more thought
 @app.route('/submitrecipepage3', methods=['GET', 'POST'])
 def submitrecipepage3():
-    ingredientname = get_ingredient_names()
-    unitname = get_unit_types()
     addedingredients = session.get('addedingredients', [])
     if request.method == 'POST':
         ingredient = request.form.getlist('ingredientname')
@@ -106,7 +104,7 @@ def submitrecipepage3():
         session['addedingredients'] = addedingredients
 
         return redirect(url_for('submitrecipepage4'))
-    return render_template('submitRecipepage3.html', title='Recipe', ingredientname=ingredientname, unitname=unitname, addedingredients = addedingredients )
+    return render_template('submitRecipepage3.html', title='Recipe', addedingredients = addedingredients )
 
 # add recipe and submit page 3 are currently not achieving the goal of adding to the table
 # need to rethink it and work out how to make it work so it does add to the table each time
@@ -120,7 +118,7 @@ def addingredients():
     if 'addedingredients' not in session:
         session['addedingredients'] = []
     if request.method == 'POST':
-        # Get data from page 2 form and store in session
+
         ingredient = request.form.get('ingredientname')
         quantity = request.form.get('quantity')
         unit = request.form.get('unitname')
@@ -129,8 +127,8 @@ def addingredients():
             'quantity': quantity,
             'unit': unit
         }
-
         session['addedingredients'].append(newingredients)
+        print(session['addedingredients'])
         return redirect(url_for('submitrecipepage3'))
     # addedingredients = []
     return render_template('addrecipe.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
