@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
-    get_ingredient_names, get_unit_types, get_recipe_title, get_recipe_desc
+    get_ingredient_names, get_unit_types, get_recipe_title
 from application import app
 
 
@@ -56,10 +56,11 @@ def submit_recipe():
 @app.route('/search')
 def search():
     recipename = get_recipe_title()
-    recipedesc = get_recipe_desc()
+    # recipedesc = get_recipe_desc()
     ingredientname = get_ingredient_names()
-    return render_template('search.html', recipename=recipename, recipedesc=recipedesc, ingredientname=ingredientname)
-
+    # I removed recipedesc as get recipe title gets the description so not sure you needed it in a separate function?
+    # return render_template('search.html', recipename=recipename, recipedesc=recipedesc, ingredientname=ingredientname)
+    return render_template('search.html', recipename=recipename, ingredientname=ingredientname)
 
 @app.route('/submitsuccess')
 def success_submit():

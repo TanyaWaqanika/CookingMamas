@@ -102,18 +102,25 @@ def get_recipe_title():
            LEFT JOIN image ON recipe.recipeID = image.recipeID 
            """
     cursor.execute(sql)
-    recipe_titles = [row[0] for row in cursor.fetchall()]
+    # changed this as what this was doing was getting the first row only
+    # recipe_titles = [row[0] for row in cursor.fetchall()]
+    # fetchall has taken all rows    
+    recipe_titles = cursor.fetchall()
+    print("Total number of rows in table: ", cursor.rowcount)
     cursor.close()  # Close the cursor
     return recipe_titles
 
 
-def get_recipe_desc():
-    cursor = recipedb.cursor()
-    sql = "SELECT recipeDescription from recipe"
-    cursor.execute(sql)
-    recipe_desc = [row[0] for row in cursor.fetchall()]
-    cursor.close()  # Close the cursor
-    return recipe_desc
+print(get_recipe_title())
+# removed this function because your function above already gets the description 
+# commented it out in case it is used anywhere else but think you're ok with what you've got above
+# def get_recipe_desc():
+#     cursor = recipedb.cursor()
+#     sql = "SELECT recipeDescription from recipe"
+#     cursor.execute(sql)
+#     recipe_desc = [row[0] for row in cursor.fetchall()]
+#     cursor.close()  # Close the cursor
+#     return recipe_desc
 
 
 # function to get all the dietaryType from the sql database so we can present on the front end

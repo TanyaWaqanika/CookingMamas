@@ -27,10 +27,12 @@
 </div>
 
 
-{% for name in recipename %}
+{% for recipe in recipename %}
 <input type="hidden" id="get_recipes" value="{{ name }}">
-        <h1>{{ name }}  </h1>
-<p>{{ name.recipeDescription }}</p>
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple-->
+        <h1>{{ recipe[0] }}</h1>
+        <p>{{ recipe[1] }}</p>
+        <img src="/static/{{recipe[2]}}" alt="Recipe image">
 <!--
 {% for desc in recipedesc %}
 {{ desc }}
