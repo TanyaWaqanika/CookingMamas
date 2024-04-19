@@ -151,6 +151,7 @@ color: #CCCFFB;
   padding: 16px 0 10px;
  }
 
+
  #durationtime {
   font-family: "Lobster", sans-serif;
   font-weight: 700;
@@ -176,3 +177,51 @@ color: #CCCFFB;
   background-color: #a9def9;
   color: #ff70a6;
 }
+
+.image-container {
+    height: 70vh;
+    overflow: hidden; /* Hide overflow content */
+    padding-bottom: 10px
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resize image to cover container */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: -30px; /* Adjust as needed */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 700px; /* Ensure cards have the same height */
+}
+
+.recipe-card-img-top {
+    border-top-left-radius: 8px;
+    height: 60%; /* Set the image height to 60% of the card height */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    border-bottom-radius: 8px;
+    padding:2rem
+
+
+}
+ .recipe-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+

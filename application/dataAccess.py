@@ -97,20 +97,30 @@ def get_recipe_by_id(recipe_id):
 
 def get_recipe_title():
     cursor = recipedb.cursor()
-    sql = "SELECT recipeName from recipe"
+    sql = """SELECT recipe.recipeName, recipe.recipeDescription, image.imageSource
+           FROM recipe 
+           LEFT JOIN image ON recipe.recipeID = image.recipeID 
+           """
     cursor.execute(sql)
-    recipe_titles = [row[0] for row in cursor.fetchall()]
+    # changed this as what this was doing was getting the first row only
+    # recipe_titles = [row[0] for row in cursor.fetchall()]
+    # fetchall has taken all rows    
+    recipe_titles = cursor.fetchall()
+    print("Total number of rows in table: ", cursor.rowcount)
     cursor.close()  # Close the cursor
     return recipe_titles
 
 
-def get_recipe_desc():
-    cursor = recipedb.cursor()
-    sql = "SELECT recipeDescription from recipe"
-    cursor.execute(sql)
-    recipe_desc = [row[0] for row in cursor.fetchall()]
-    cursor.close()  # Close the cursor
-    return recipe_desc
+print(get_recipe_title())
+# removed this function because your function above already gets the description 
+# commented it out in case it is used anywhere else but think you're ok with what you've got above
+# def get_recipe_desc():
+#     cursor = recipedb.cursor()
+#     sql = "SELECT recipeDescription from recipe"
+#     cursor.execute(sql)
+#     recipe_desc = [row[0] for row in cursor.fetchall()]
+#     cursor.close()  # Close the cursor
+#     return recipe_desc
 
 
 # function to get all the dietaryType from the sql database so we can present on the front end
@@ -154,6 +164,7 @@ def get_unit_types():
     results = [row[0] for row in cursor.fetchall()]
     return results
 
+
 def get_cuisine_types():
     cursor = recipedb.cursor()
     sql = "SELECT cuisine_type from cuisine"
@@ -169,6 +180,7 @@ def format_timedelta(value):
     hours, remainder = divmod(value.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     return '{:02}:{:02}:{:02}'.format(hours, minutes, seconds)
+
 
 def get_duration():
     cursor = recipedb.cursor()
@@ -186,6 +198,7 @@ def get_duration():
         formatted_results.append(formatted_row)
 
     return formatted_results
+
 
 print(get_duration())
 
