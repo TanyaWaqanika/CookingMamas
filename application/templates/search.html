@@ -30,9 +30,12 @@
 {% for name in recipename %}
 <input type="hidden" id="get_recipes" value="{{ name }}">
         <h1>{{ name }}  </h1>
+<p>{{ name.recipeDescription }}</p>
+<!--
 {% for desc in recipedesc %}
 {{ desc }}
 {% endfor %}
+-->
 {% endfor %}
 
 <script src="../static/filter.js"></script>

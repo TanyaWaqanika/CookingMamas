@@ -97,7 +97,10 @@ def get_recipe_by_id(recipe_id):
 
 def get_recipe_title():
     cursor = recipedb.cursor()
-    sql = "SELECT recipeName from recipe"
+    sql = """SELECT recipe.recipeName, recipe.recipeDescription, image.imageSource
+           FROM recipe 
+           LEFT JOIN image ON recipe.recipeID = image.recipeID 
+           """
     cursor.execute(sql)
     recipe_titles = [row[0] for row in cursor.fetchall()]
     cursor.close()  # Close the cursor
