@@ -69,7 +69,10 @@
                             <tr>
                                 <td>{{ duration.prepTime }}</td>
                                 <td>{{ duration.cookTime }}</td>
-                                <td><input name="duration" class="form-check-input" type="checkbox" value="{{ duration.prepTime }}{{ duration.cookTime }}"></td>
+                                <td>
+                                    <input name="prepTime" type="checkbox" value="{{ duration.prepTime }}">
+                                    <input name="cookTime" type="checkbox" value="{{ duration.cookTime }}">
+                                </td>
                             </tr>
                             {% endfor %}
                         </table>

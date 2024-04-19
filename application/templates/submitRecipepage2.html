@@ -20,7 +20,7 @@
 
                               {% for dietary in dietarytype %}
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="dietary"  type="checkbox" value="{{dietarytype}}">
+                                <input class="form-check-input" name="dietary"  type="checkbox" value="{{dietary}}">
                                 <label class="form-check-label" id="dietary"  for="dietary" >{{dietary}}</label>
                               </div>
                               {% endfor %}
@@ -31,12 +31,12 @@
 
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
-                              <label for="allergytype" class="col-form-label">Allergy Type:  </label>
+                              <label for="allergy" class="col-form-label">Allergy Type:  </label>
 
                               {% for allergy in allergytype %}
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="allergytype" type="checkbox" value="{{allergy}}">
-                                    <label class="form-check-label"  id="allergytype"  for="allergytype">{{allergy}}</label>
+                                    <input class="form-check-input" name="allergy" type="checkbox" value="{{allergy}}">
+                                    <label class="form-check-label"  id="allergy"  for="allergy">{{allergy}}</label>
                                 </div>
                               {% endfor %}
                           </div>
@@ -44,12 +44,12 @@
 
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
-                                <label for="toolname" class="col-form-label">Tools Required:  </label>
+                                <label for="tool" class="col-form-label">Tools Required:  </label>
 
                               {% for tool in toolname %}
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="toolname" type="checkbox" value="{{tool}}">
-                                    <label class="form-check-label" id="toolname"  for="toolname">{{tool}}</label>
+                                    <input class="form-check-input" name="tool" type="checkbox" value="{{tool}}">
+                                    <label class="form-check-label" id="tool"  for="tool">{{tool}}</label>
                                 </div>
                              {% endfor %}
                             </div>

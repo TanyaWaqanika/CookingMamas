@@ -7,6 +7,7 @@
         <section>
             <h3 id="central-text">We want your recipes!</h3>
             <br>
+            <form action="" target="_self" autocomplete="on" method="POST">
             <!-- Table to display added ingredients -->
             <table id="ingredientTable" class="table">
                 <thead>
@@ -17,19 +18,181 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for ingredient in session['addedingredients'] %}
                     <tr>
-                        <td>{{ ingredient['ingredient'] }}</td>
-                        <td>{{ ingredient['quantity'] }}</td>
-                        <td>{{ ingredient['unit'] }}</td>
+                        <td>
+                            <select class="form-control" id="ingredientname" name="ingredientname">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname" name="unitname">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
                     </tr>
-                    {% endfor %}
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname2" name="ingredientname2">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity2" name="quantity2" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname2" name="unitname2">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname3" name="ingredientname3">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity3" name="quantity3" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname3" name="unitname3">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname4" name="ingredientname4">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity4" name="quantity4" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname4" name="unitname4">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                        <td>
+                            <select class="form-control" id="ingredientname5" name="ingredientname5">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity5" name="quantity5" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname5" name="unitname5">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname6" name="ingredientname6">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity6" name="quantity6" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname6" name="unitname6">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname7" name="ingredientname7">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity7" name="quantity7" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname7" name="unitname7">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname8" name="ingredientname8">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity8" name="quantity8" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname8" name="unitname8">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname9" name="ingredientname9">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity9" name="quantity9" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname9" name="unitname9">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                <tr>
+                         <td>
+                            <select class="form-control" id="ingredientname10" name="ingredientname10">
+                        {% for ingredient in ingredientname|sort%}
+                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                        {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" min="0.25" step="0.25" id="quantity10" name="quantity10" class="form-control" aria-describedby="quantity">
+                        </td>
+                        <td><select class="form-control" id="unitname10" name="unitname10">
+                            {% for unit in unitname|sort %}
+                            <option value="{{ unit }}">{{ unit }}</option>
+                            {% endfor %}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <a href="{{ url_for('addingredients') }}">Add ingredients</a>
             <br>
-            <br>
-                <button type="submit">Next</button>
+            <button type="submit">Next</button>
+
             </form>
         </section>
     </div>

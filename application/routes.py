@@ -2,7 +2,17 @@ from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
     get_ingredient_names, get_unit_types, get_recipe_title, get_cuisine_types, get_duration
 from application import app
+import mysql.connector
 
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Pa$$w0rd",  # use for windows
+    # password="",  # use for mac
+    database="recipedb"
+)
+
+cursor = db.cursor()
 
 @app.route('/')
 @app.route('/home')
@@ -58,11 +68,23 @@ def submitrecipepage1():
     durationdata = get_duration()
     if request.method == 'POST':
         # Get data from page 1 form and store in session
-        session['recipeName'] = request.form['recipeName']
-        session['recipeDescription'] = request.form['recipeDescription']
-        session['cuisine'] = request.form.getlist('cuisine')
-        session['duration'] = request.form.getlist('duration')
-        session['serving'] = request.form['serving']
+        recipename = request.form['recipeName']
+        recipedescription = request.form['recipeDescription']
+        cuisinetype = ','.join(request.form.getlist('cuisine'))  # Convert list to comma-separated string
+        preptime = request.form['prepTime']
+        cooktime = request.form['cookTime']
+        servingsize = request.form['serving']
+        print(type(preptime))
+        print(recipename, recipedescription, cuisinetype, preptime, cooktime, servingsize)
+        args= (recipename,recipedescription,cuisinetype, preptime, cooktime, servingsize)
+        print(args)
+        try:
+            cursor.callproc('insert_recipe_v1', args)
+            db.commit()  # If autocommit is disabled
+
+        # cursor.callproc('insert_recipe_v1', args)
+        except mysql.connector.Error as err:
+            print("Error calling stored procedure: {}".format(err))
         return redirect(url_for('submitrecipepage2'))
     return render_template('submitRecipepage1.html', title='Recipe', cuisinetype = cuisinetype, durationdata = durationdata)
 
@@ -75,10 +97,16 @@ def submitrecipepage2():
     allergytype = get_allergy_types()
     toolname = get_tool_names()
     if request.method == 'POST':
-        # Get data from page 1 form and store in session
-        session['dietary'] = request.form.getlist('dietary')
-        session['allergytype'] = request.form.getlist('allergytype')
-        session['toolname'] = request.form.getlist('toolname')
+        dietarytype = ','.join(request.form.getlist('dietary'))
+        allergytype = ','.join(request.form.getlist('allergy'))
+        toolname = ','.join(request.form.getlist('tool'))  # Convert list to comma-separated string
+        print(dietarytype, allergytype, toolname)
+        cursor.callproc('insert_dietary_v1', (dietarytype,))
+        db.commit()  # If autocommit is disabled
+        cursor.callproc('insert_allergy_v1', (allergytype,))
+        db.commit()  # If autocommit is disabled
+        cursor.callproc('insert_tool_v1', (toolname,))
+        db.commit()  # If autocommit is disabled
         return redirect(url_for('submitrecipepage3'))
     return render_template('submitRecipepage2.html', title='Recipe', dietarytype=dietarytype, allergytype=allergytype,
                            toolname=toolname)
@@ -89,49 +117,60 @@ def submitrecipepage2():
 # got myself all confused by the sessions so between 3 and add recipe needs more thought
 @app.route('/submitrecipepage3', methods=['GET', 'POST'])
 def submitrecipepage3():
-    addedingredients = session.get('addedingredients', [])
+    ingredientname = get_ingredient_names()
+    unitname = get_unit_types()
     if request.method == 'POST':
-        ingredient = request.form.getlist('ingredientname')
-        quantity = request.form['quantity']
-        unit = request.form.getlist('unitname')
-        new_ingredient = {
-            'ingredient': ingredient,
-            'quantity': quantity,
-            'unit': unit
-        }
+        ingredientnameone = request.form['ingredientname']
+        quantityone = request.form['quantity']
+        unitnameone = request.form['unitname']
+        args = (ingredientnameone,quantityone,unitnameone)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+        
+        ingredientnametwo = request.form['ingredientname2']
+        quantitytwo = request.form['quantity2']
+        unitnametwo = request.form['unitname2']
+        args = (ingredientnametwo, quantitytwo, unitnametwo)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
 
-        addedingredients.append(new_ingredient)
-        session['addedingredients'] = addedingredients
-
+        ingredientnamethree = request.form['ingredientname3']
+        quantitythree = request.form['quantity3']
+        unitnamethree = request.form['unitname3']
+        args = (ingredientnamethree, quantitythree, unitnamethree)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+        # print(ingredientname, quantity, unitname )
         return redirect(url_for('submitrecipepage4'))
-    return render_template('submitRecipepage3.html', title='Recipe', addedingredients = addedingredients )
+    return render_template('submitRecipepage3.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
 
 # add recipe and submit page 3 are currently not achieving the goal of adding to the table
 # need to rethink it and work out how to make it work so it does add to the table each time
 # also add recipe page has massive buttons so needs some styling!
-@app.route('/addrecipe', methods=['GET', 'POST'])
-def addingredients():
-    ingredientname = get_ingredient_names()
-    unitname = get_unit_types()
-
-    # Initialize 'addedingredients' in session if not already initialized
-    if 'addedingredients' not in session:
-        session['addedingredients'] = []
-    if request.method == 'POST':
-
-        ingredient = request.form.get('ingredientname')
-        quantity = request.form.get('quantity')
-        unit = request.form.get('unitname')
-        newingredients = {
-            'ingredient': ingredient,
-            'quantity': quantity,
-            'unit': unit
-        }
-        session['addedingredients'].append(newingredients)
-        print(session['addedingredients'])
-        return redirect(url_for('submitrecipepage3'))
-    # addedingredients = []
-    return render_template('addrecipe.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
+# @app.route('/addrecipe', methods=['GET', 'POST'])
+# def addingredients():
+#     ingredientname = get_ingredient_names()
+#     unitname = get_unit_types()
+#     # Initialize 'addedingredients' in session if not already initialized
+#     if 'addedingredients' not in session:
+#         session['addedingredients'] = []
+#     if request.method == 'POST':
+#         ingredient = request.form.get('ingredientname')
+#         quantity = request.form.get('quantity')
+#         unit = request.form.get('unitname')
+#         newingredients = {
+#             'ingredient': ingredient,
+#             'quantity': quantity,
+#             'unit': unit
+#         }
+#         session['addedingredients'].append(newingredients)
+#         print(session['addedingredients'])
+#         return redirect(url_for('submitrecipepage3'))
+#     # addedingredients = []
+#     return render_template('addrecipe.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
 
 
 # page 4 for steps
@@ -143,7 +182,7 @@ def submitrecipepage4():
         session['step'] = request.form.getlist('step')
         # Process and save data
         final_data = {
-            'data1': session.pop('data1', None),
+            'addedingredients': session.pop('addedingredients', None),
             'data2': session.pop('data2', None),
             'data3': session.pop('data3', None)
         }
@@ -175,4 +214,5 @@ def success_submit():
 @app.route('/recipe')
 def recipe_landing():
     return render_template('recipeLanding.html')
+
 
