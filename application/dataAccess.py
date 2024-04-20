@@ -94,6 +94,15 @@ def get_recipe_by_id(recipe_id):
 
     return recipe
 
+# code to filter recipes by dietary req 
+def filter_by_dietary():
+    cursor = recipedb.cursor()
+    sql = """SELECT recipeDietaryRequirement.recipeID, recipeDietaryRequirement.dietaryID
+            FROM recipeDietaryRequirement
+            WHERE 
+            """
+    cursor.execute(sql)
+
 
 def get_recipe_title():
     cursor = recipedb.cursor()
@@ -110,8 +119,11 @@ def get_recipe_title():
     cursor.close()  # Close the cursor
     return recipe_titles
 
+
 print(get_recipe_title())
-# removed this function because your function above already gets the description 
+
+
+# removed this function because your function above already gets the description
 # commented it out in case it is used anywhere else but think you're ok with what you've got above
 # def get_recipe_desc():
 #     cursor = recipedb.cursor()
