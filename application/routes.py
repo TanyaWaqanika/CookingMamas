@@ -143,34 +143,65 @@ def submitrecipepage3():
         print(args)
         cursor.callproc('insert_ingredients_v1', args)
         db.commit()  # If autocommit is disabled
+        
+        ingredientnamefour = request.form['ingredientname4']
+        quantityfour = request.form['quantity4']
+        unitnamefour = request.form['unitname4']
+        args = (ingredientnamefour, quantityfour, unitnamefour)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnamefive = request.form['ingredientname5']
+        quantityfive = request.form['quantity5']
+        unitnamefive = request.form['unitname5']
+        args = (ingredientnamefive, quantityfive, unitnamefive)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnamesix = request.form['ingredientname6']
+        quantitysix = request.form['quantity6']
+        unitnamesix = request.form['unitname6']
+        args = (ingredientnamesix, quantitysix, unitnamesix)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnameseven = request.form['ingredientname7']
+        quantityseven = request.form['quantity7']
+        unitnameseven = request.form['unitname7']
+        args = (ingredientnameseven, quantityseven, unitnameseven)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnameeight = request.form['ingredientname8']
+        quantityeight = request.form['quantity8']
+        unitnameeight = request.form['unitname8']
+        args = (ingredientnameeight, quantityeight, unitnameeight)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnamenine = request.form['ingredientname9']
+        quantitynine = request.form['quantity9']
+        unitnamenine = request.form['unitname9']
+        args = (ingredientnamenine, quantitynine, unitnamenine)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
+
+        ingredientnameten = request.form['ingredientname10']
+        quantityten = request.form['quantity10']
+        unitnameten = request.form['unitname10']
+        args = (ingredientnameten, quantityten, unitnameten)
+        print(args)
+        cursor.callproc('insert_ingredients_v1', args)
+        db.commit()  # If autocommit is disabled
         # print(ingredientname, quantity, unitname )
         return redirect(url_for('submitrecipepage4'))
     return render_template('submitRecipepage3.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
-
-# add recipe and submit page 3 are currently not achieving the goal of adding to the table
-# need to rethink it and work out how to make it work so it does add to the table each time
-# also add recipe page has massive buttons so needs some styling!
-# @app.route('/addrecipe', methods=['GET', 'POST'])
-# def addingredients():
-#     ingredientname = get_ingredient_names()
-#     unitname = get_unit_types()
-#     # Initialize 'addedingredients' in session if not already initialized
-#     if 'addedingredients' not in session:
-#         session['addedingredients'] = []
-#     if request.method == 'POST':
-#         ingredient = request.form.get('ingredientname')
-#         quantity = request.form.get('quantity')
-#         unit = request.form.get('unitname')
-#         newingredients = {
-#             'ingredient': ingredient,
-#             'quantity': quantity,
-#             'unit': unit
-#         }
-#         session['addedingredients'].append(newingredients)
-#         print(session['addedingredients'])
-#         return redirect(url_for('submitrecipepage3'))
-#     # addedingredients = []
-#     return render_template('addrecipe.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
 
 
 # page 4 for steps
@@ -178,17 +209,34 @@ def submitrecipepage3():
 def submitrecipepage4():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
     if request.method == 'POST':
+        stepnumber = request.form['stepnumber']
+        stepdescription = request.form['stepdescription']
+        args = (stepnumber, stepdescription)
+        # Call the stored procedure for each step number and description pair
+        cursor.callproc('insert_steps_v1', args)
+        db.commit()
         # Get data from page 2 form and store in session
-        session['step'] = request.form.getlist('step')
-        # Process and save data
-        final_data = {
-            'addedingredients': session.pop('addedingredients', None),
-            'data2': session.pop('data2', None),
-            'data3': session.pop('data3', None)
-        }
-        # placeholder for calling the sql procedures:
-        # cursor.callproc('xx', args)
-        # db.commit()
+        for key in request.form:
+            # was expecting that for each row it would increment so row_1, row_2 etc but not currently happening
+            print(f"this is the key {key}")
+            # print(request.form['row_2_stepnumber'])
+            # Check if the key ends with stepnumber to identify the dynamically added rows
+            if key.endswith('_stepnumber'):
+                # Extract the step number and description from the form data
+                # for some reason yet for me to understand the javascript id's - the key takes you to the step number
+                step_number = request.form[key]
+                # the key for the description doesnt have the description in it's title 
+                step_description_key = key.removesuffix('_stepnumber')
+                print(f"step number {step_number}, step desc {step_description_key}")
+                print(f"stepkey {step_description_key}")
+                step_description = request.form[step_description_key]
+                print(f"this is something {step_description}")
+                args = (step_number, step_description)
+                print(f"this is the arguments {args}")
+                # Call the stored procedure for each step number and description pair
+                cursor.callproc('insert_steps_v1', args)
+                db.commit()
+
         return redirect(url_for('successsubmit'))
     return render_template('submitRecipepage4.html', title='Recipe')
 
