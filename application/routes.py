@@ -1,13 +1,14 @@
 from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
-    get_ingredient_names, get_unit_types, get_recipe_title
+    get_ingredient_names, get_unit_types, get_recipe_title, filter_by_dietary
 from application import app
 
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', title='Home')
+    recipes = filter_by_dietary("Vegan")
+    return render_template('home.html', title='Home',recipe=recipes)
 
 
 @app.route('/welcome/<name>')
