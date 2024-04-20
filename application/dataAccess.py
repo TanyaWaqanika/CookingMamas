@@ -95,14 +95,30 @@ def get_recipe_by_id(recipe_id):
     return recipe
 
 # code to filter recipes by dietary req 
-def filter_by_dietary():
-    cursor = recipedb.cursor()
-    sql = """SELECT recipeDietaryRequirement.recipeID, recipeDietaryRequirement.dietaryID
-            FROM recipeDietaryRequirement
-            WHERE 
-            """
-    cursor.execute(sql)
+# def filter_by_dietary():
+#     cursor = recipedb.cursor()
+#     sql = """SELECT recipeDietaryRequirement.recipeID, recipeDietaryRequirement.dietaryID
+#             FROM recipeDietaryRequirement
+#             WHERE
+#             """
+#     cursor.execute(sql)
 
+def filter_by_dietary(selected_dietary):
+    # Fetch dietary ID based on selected dietary type
+    mycursor.execute("SELECT dietaryID FROM dietaryrequirement WHERE dietaryType = %s", (selected_dietary,))
+    dietary_id = mycursor.fetchone()[0]
+
+    # Fetch recipes based on the selected dietary requirement
+    sql = """
+        SELECT recipeName FROM recipe 
+        JOIN recipedietaryrequirement ON recipe.recipeId = recipedietaryrequirement.recipeId 
+        WHERE recipedietaryrequirement.dietaryID = %s
+    """
+    mycursor.execute(sql, (dietary_id,))
+    recipes = mycursor.fetchall()
+    return recipes
+
+print(filter_by_dietary("Vegan"))
 
 def get_recipe_title():
     cursor = recipedb.cursor()
