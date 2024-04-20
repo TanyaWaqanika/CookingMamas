@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-
+<!--
 <div class="col-auto">
     <label for="ingredientname" class="col-form-label">Ingredients Required:  </label>
 
@@ -23,22 +23,36 @@
     </div>
  {% endfor %}
 
+-->
 
-</div>
 
 
+<div class="container">
+        <div style="margin-top: 50px;"></div>
+     <div class="row">
 {% for recipe in recipename %}
 <input type="hidden" id="get_recipes" value="{{ name }}">
-<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple-->
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple
         <h1>{{ recipe[0] }}</h1>
         <p>{{ recipe[1] }}</p>
         <img src="/static/{{recipe[2]}}" alt="Recipe image">
-<!--
-{% for desc in recipedesc %}
-{{ desc }}
-{% endfor %}
 -->
-{% endfor %}
 
-<script src="../static/filter.js"></script>
+
+ <div class="col-lg-4">
+                <div class="recipe-card">
+                    <img src="/static/{{ recipe[3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe [1] }}</h5>
+                        <p class="card-text">{{ recipe [2] }}</p>
+                        <a href="/recipe/{{ recipe [0] }} " class="button-value">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+{% endfor %}
+      </div>
+</div>
+
+
 {% endblock %}

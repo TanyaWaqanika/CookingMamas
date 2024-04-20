@@ -97,7 +97,7 @@ def get_recipe_by_id(recipe_id):
 
 def get_recipe_title():
     cursor = recipedb.cursor()
-    sql = """SELECT recipe.recipeName, recipe.recipeDescription, image.imageSource
+    sql = """SELECT recipe.recipeID, recipe.recipeName, recipe.recipeDescription, image.imageSource
            FROM recipe 
            LEFT JOIN image ON recipe.recipeID = image.recipeID 
            """
@@ -109,7 +109,6 @@ def get_recipe_title():
     print("Total number of rows in table: ", cursor.rowcount)
     cursor.close()  # Close the cursor
     return recipe_titles
-
 
 print(get_recipe_title())
 # removed this function because your function above already gets the description 
