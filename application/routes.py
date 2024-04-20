@@ -7,8 +7,8 @@ from application import app
 @app.route('/')
 @app.route('/home')
 def home():
-    recipes = filter_by_dietary("Vegan")
-    return render_template('home.html', title='Home',recipe=recipes)
+    veganFilter = filter_by_dietary("Vegan")
+    return render_template('home.html', title='Home', veganFilter=veganFilter)
 
 
 @app.route('/welcome/<name>')

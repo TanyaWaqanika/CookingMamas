@@ -94,7 +94,8 @@ def get_recipe_by_id(recipe_id):
 
     return recipe
 
-# code to filter recipes by dietary req 
+
+# code to filter recipes by dietary req
 # def filter_by_dietary():
 #     cursor = recipedb.cursor()
 #     sql = """SELECT recipeDietaryRequirement.recipeID, recipeDietaryRequirement.dietaryID
@@ -118,7 +119,9 @@ def filter_by_dietary(selected_dietary):
     recipes = mycursor.fetchall()
     return recipes
 
+
 print(filter_by_dietary("Vegan"))
+
 
 def get_recipe_title():
     cursor = recipedb.cursor()
@@ -136,7 +139,7 @@ def get_recipe_title():
     return recipe_titles
 
 
-print(get_recipe_title())
+# print(get_recipe_title())
 
 
 # removed this function because your function above already gets the description
