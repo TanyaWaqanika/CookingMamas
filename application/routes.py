@@ -153,7 +153,11 @@ def submitrecipepage4():
 
 @app.route('/submitsuccess')
 def successsubmit():
-    return render_template('submitRecipeSuccess.html', title='Success')
+    sql = """SELECT MAX(recipeID) FROM recipe;"""
+    cursor.execute(sql)
+    recipeID = [row[0] for row in cursor.fetchall()]
+    print(recipeID)
+    return render_template('submitRecipeSuccess.html', title='Success', recipeID = recipeID)
 
 
 @app.route('/allrecipes', methods=["POST", "GET"])
