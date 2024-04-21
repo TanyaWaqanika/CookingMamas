@@ -15,12 +15,18 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
+
 @app.route('/')
 @app.route('/home')
 def home():
     veganFilter = filter_by_dietary("Vegan")
 
     return render_template('home.html', title='Home', veganFilter=veganFilter)
+
+@app.route('/about/<name>')
+@app.route('/about')
+def about(name):
+    return render_template('about.html', name=name.capitalize(), colour=['red', 'yellow', 'green'])
 
 
 @app.route('/recipe/<int:recipe_id>')
@@ -41,7 +47,7 @@ def format_timedelta_filter(value):
     return '{:02}:{:02}:{:02}'.format(hours, minutes, seconds)
 
 
-@app.route('/submitrecipepage1', methods=['GET','POST'])
+@app.route('/submitrecipepage1', methods=['GET', 'POST'])
 def submitrecipepage1():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
     cuisinetype = get_cuisine_types()
@@ -54,7 +60,7 @@ def submitrecipepage1():
         preptime = request.form['prepTime']
         cooktime = request.form['cookTime']
         servingsize = request.form['serving']
-        args= (recipename,recipedescription,cuisinetype, preptime, cooktime, servingsize)
+        args = (recipename, recipedescription, cuisinetype, preptime, cooktime, servingsize)
         try:
             cursor.callproc('insert_recipe_v1', args)
             db.commit()  # If autocommit is disabled
@@ -63,7 +69,7 @@ def submitrecipepage1():
         except mysql.connector.Error as err:
             print("Error calling stored procedure: {}".format(err))
         return redirect(url_for('submitrecipepage2'))
-    return render_template('submitRecipepage1.html', title='Recipe', cuisinetype = cuisinetype, durationdata = durationdata)
+    return render_template('submitRecipepage1.html', title='Recipe', cuisinetype=cuisinetype, durationdata=durationdata)
 
 
 # the sessions are meant to save the data submitted on the form page so that when we get to the end of the form we can then take that data and use it
@@ -151,6 +157,7 @@ def submitrecipepage4():
         return redirect(url_for('successsubmit'))
     return render_template('submitRecipepage4.html', title='Recipe')
 
+
 @app.route('/submitsuccess')
 def successsubmit():
     return render_template('submitRecipeSuccess.html', title='Success')
@@ -163,7 +170,8 @@ def allrecipes():
     dietarytype = get_dietary_types()
     if request.form.get('d_enabled') == 'on':
         vegan = filter_by_dietary("Vegan")
-    return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname, dietarytype=dietarytype)
+    return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname,
+                           dietarytype=dietarytype)
 
 
 @app.route('/recipe')
