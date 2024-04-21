@@ -8,9 +8,9 @@ recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
     # Windows password
-     password="Pa$$w0rd",
+    password="Pa$$w0rd",
     # Mac password 
-   #  password="",
+    #  password="",
     database="recipedb"
 )
 
@@ -111,7 +111,7 @@ def filter_by_dietary(selected_dietary):
 
     # Fetch recipes based on the selected dietary requirement
     sql = """
-        SELECT recipeName FROM recipe 
+        SELECT recipeName, recipeDescription FROM recipe 
         JOIN recipedietaryrequirement ON recipe.recipeId = recipedietaryrequirement.recipeId 
         WHERE recipedietaryrequirement.dietaryID = %s
     """
@@ -139,7 +139,7 @@ def get_recipe_title():
     return recipe_titles
 
 
-# print(get_recipe_title())
+print(get_recipe_title())
 
 
 # removed this function because your function above already gets the description

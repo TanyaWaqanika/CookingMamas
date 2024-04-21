@@ -32,13 +32,14 @@ def submit_recipe():
                            toolname=toolname, ingredientname=ingredientname, unitname=unitname)
 
 
-@app.route('/allrecipes', methods=["POST", "GET"])
+@app.route('/allrecipes', methods=['GET', 'POST'])
 def allrecipes():
     recipename = get_recipe_title()
     ingredientname = get_ingredient_names()
     dietarytype = get_dietary_types()
-    if request.form.get('d_enabled') == 'on':
-        vegan = filter_by_dietary("Vegan")
+    if request.method == 'POST':
+        request.form.getlist('glutenType')
+        return filter_by_dietary("Gluten Free")
     return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname, dietarytype=dietarytype)
 
 
