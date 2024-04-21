@@ -139,20 +139,6 @@ def get_recipe_title():
     return recipe_titles
 
 
-# print(get_recipe_title())
-
-
-# removed this function because your function above already gets the description
-# commented it out in case it is used anywhere else but think you're ok with what you've got above
-# def get_recipe_desc():
-#     cursor = recipedb.cursor()
-#     sql = "SELECT recipeDescription from recipe"
-#     cursor.execute(sql)
-#     recipe_desc = [row[0] for row in cursor.fetchall()]
-#     cursor.close()  # Close the cursor
-#     return recipe_desc
-
-
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():
     cursor = recipedb.cursor()
@@ -230,14 +216,5 @@ def get_duration():
     return formatted_results
 
 
-print(get_duration())
 
 
-# print(get_duration())
-
-
-# def insert_recipe()
-#     args = (,)
-#     # flask interacting with mysql db
-#     cursor = recipedb.cursor()
-#     cursor.callproc('insert_recipe_v1', args)
