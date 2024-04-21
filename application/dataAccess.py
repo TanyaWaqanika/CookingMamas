@@ -8,9 +8,9 @@ recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
     # Windows password
-    # password="Pa$$w0rd",
+     password="Pa$$w0rd",
     # Mac password 
-    password="",
+   #  password="",
     database="recipedb"
 )
 

@@ -8,30 +8,8 @@ from application import app
 @app.route('/home')
 def home():
     veganFilter = filter_by_dietary("Vegan")
+
     return render_template('home.html', title='Home', veganFilter=veganFilter)
-
-
-@app.route('/welcome/<name>')
-def welcome(name):
-    return render_template('welcome.html', name=name, group='Everyone')
-
-
-@app.route('/about/<name>')
-@app.route('/about')
-def about(name):
-    return render_template('about.html', name=name.capitalize(), colour=['red', 'yellow', 'green'])
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    # app.logger.debug("Start of login")
-    if request.method == 'POST':
-        session['username'] = request.form['username']
-        # app.logger.debug("Username is: " + session['username'])
-        session['loggedIn'] = True
-        session['role'] = 'admin'
-        return redirect(url_for('all_products'))
-    return render_template('login.html', title="Login")
 
 
 @app.route('/recipe/<int:recipe_id>')
@@ -54,12 +32,14 @@ def submit_recipe():
                            toolname=toolname, ingredientname=ingredientname, unitname=unitname)
 
 
-@app.route('/search')
-def search():
+@app.route('/allrecipes', methods=["POST", "GET"])
+def allrecipes():
     recipename = get_recipe_title()
     ingredientname = get_ingredient_names()
-    # I removed recipedesc as get recipe title gets the description so not sure you needed it in a separate function?
-    return render_template('search.html', recipename=recipename, ingredientname=ingredientname)
+    dietarytype = get_dietary_types()
+    if request.form.get('d_enabled') == 'on':
+        vegan = filter_by_dietary("Vegan")
+    return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname, dietarytype=dietarytype)
 
 
 @app.route('/submitsuccess')
