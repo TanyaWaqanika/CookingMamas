@@ -6,6 +6,17 @@
 <!-- -->
 
 <!-- Option/Filter card block -->
+<div class="row mt-4 g-1 px-4 mb-5">
+  <div class="col-12">
+    <h2>Vegan Recipes</h2>
+
+    <ul>
+      {% for veganFilter in veganFilter %}
+        <li>{{ veganFilter }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 <!-- Meat block -->
 

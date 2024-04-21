@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+<!--
+<div class="col-auto">
+    <label for="ingredientname" class="col-form-label">Ingredients Required:  </label>
+
+
+        {% for ingredient in ingredientname|sort %}
+
+        <input type="hidden" id="get_ingredients" value="{{ ingredient }}">
+        <div id="buttons" class="d-flex">
+                <button class="button-value">{{ ingredient }}</button>
+        </div>
+
+        {% endfor %}
+
+    <br>
+  {% for ingredient in ingredientname|sort %}
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" value="">
+        <label class="form-check-label" id="ingredientname"  for="ingredientname">{{ ingredient }}</label>
+    </div>
+ {% endfor %}
+
+-->
+
+
+
+<div class="container">
+        <div style="margin-top: 50px;"></div>
+     <div class="row">
+  {% for diet in dietarytype|sort %}
+         <form action="/allrecipes" method="GET">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="d_enabled" value="on">
+        <label class="form-check-label" id="dietarytype"  for="dietarytype">{{ diet }}</label>
+    </div>
+             </form>
+ {% endfor %}
+
+
+{% for recipe in recipename %}
+
+<input type="hidden" id="get_recipes" value="{{ name }}">
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
+
+
+ <div class="col-lg-4">
+                <div class="recipe-card">
+                    <img src="/static/{{ recipe[3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe [1] }}</h5>
+                        <p class="card-text">{{ recipe [2] }}</p>
+                        <a href="/recipe/{{ recipe [0] }} " class="button-value">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+{% endfor %}
+      </div>
+</div>
+
+
+{% endblock %}
