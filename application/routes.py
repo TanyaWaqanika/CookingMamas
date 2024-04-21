@@ -97,9 +97,10 @@ def submitrecipepage3():
     ingredientname = get_ingredient_names()
     unitname = get_unit_types()
     if request.method == 'POST':
+        # creating an empty list that the data from the rows can be put into to be sent to the stored procedure
         args_list = []
-
-        for i in range(0, 11):  # Assuming you have 10 sets of ingredient fields
+        # looping over all the ingredients rows created to get their data to send to the stored procedure
+        for i in range(0, 11):
             ingredient_key = f'ingredientname{i}'
             quantity_key = f'quantity{i}'
             unit_key = f'unitname{i}'
@@ -107,8 +108,8 @@ def submitrecipepage3():
             ingredient_name = request.form.get(ingredient_key)
             quantity = request.form.get(quantity_key)
             unit_name = request.form.get(unit_key)
-
-            if ingredient_name and quantity and unit_name:  # Check if all fields have data
+            # because not all the rows on the form will necessarily have data - checking if they do have data
+            if ingredient_name and quantity and unit_name:
                 args = (ingredient_name, quantity, unit_name)
                 args_list.append(args)
                 print(args_list)
