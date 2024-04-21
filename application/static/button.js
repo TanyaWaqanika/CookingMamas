@@ -69,15 +69,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Your JavaScript code here
     var count = 1;
-const btn = document.getElementById('addRowBtnStep');
-console.log(btn);
-    document.getElementById('addRowBtnStep').addEventListener('click', function(event) {
-        event.preventDefault();
-        count++;
+     const numRowsInput = document.getElementById('num_rows');
+    const btn = document.getElementById('addRowBtn');
+    console.log(btn);
+    if (btn) {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+             count++;
         console.log("Count:", count);
+        numRowsInput.value = count;
+        console.log("number of rows:", numRows);
         var containerstep = document.getElementById('containerStep');
         containerstep.append(addNewRowStep(count));
-    });
+//        var numRows = document.getElementById('num_rows').value;
+            // Rest of your code
+        });
+    } else {
+        console.error("Element with ID 'addRowBtnStep' not found");
+    }
+//    document.getElementById('addRowBtnStep').addEventListener('click', function(event) {
+//        event.preventDefault();
+;
 
     function addNewRowStep(count) {
         var rowId = 'row_' + count;
@@ -88,9 +100,9 @@ console.log(btn);
                 <div class="mb-3">
                     <div class="d-flex">
                         <label for="${rowId}_stepnumber" class="form-label">Step Number</label>
-                        <input type="number" min="1" id="${rowId}_stepnumber" name="${rowId}_stepnumber" class="form-control" aria-describedby="${rowId}_stepnumber" style="width: 100px;">
+                            <input type="number" min="1" id="${rowId}_stepnumber" name="${rowId}_stepnumber" class="form-control" aria-describedby="${rowId}_stepnumber" style="width: 100px;">
                         <label for="${rowId}_stepdescription" class="form-label">Step Description</label>
-                        <textarea class="form-control" id="${rowId}_stepdescription" name="${rowId}_stepdescription" rows="3" cols="100"></textarea>
+                            <textarea class="form-control" id="${rowId}_stepdescription" name="${rowId}_stepdescription" rows="3" cols="100"></textarea>
                     </div>
                 </div>
             </div>`;

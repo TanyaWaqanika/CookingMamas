@@ -216,27 +216,52 @@ def submitrecipepage4():
         cursor.callproc('insert_steps_v1', args)
         db.commit()
         # Get data from page 2 form and store in session
-        for key in request.form:
-            # was expecting that for each row it would increment so row_1, row_2 etc but not currently happening
-            print(f"this is the key {key}")
-            # print(request.form['row_2_stepnumber'])
-            # Check if the key ends with stepnumber to identify the dynamically added rows
-            if key.endswith('_stepnumber'):
-                # Extract the step number and description from the form data
-                # for some reason yet for me to understand the javascript id's - the key takes you to the step number
-                step_number = request.form[key]
-                # the key for the description doesnt have the description in it's title 
-                step_description_key = key.removesuffix('_stepnumber')
-                print(f"step number {step_number}, step desc {step_description_key}")
-                print(f"stepkey {step_description_key}")
-                step_description = request.form[step_description_key]
-                print(f"this is something {step_description}")
-                args = (step_number, step_description)
-                print(f"this is the arguments {args}")
-                # Call the stored procedure for each step number and description pair
-                cursor.callproc('insert_steps_v1', args)
-                db.commit()
+        # for key in request.form:
+        #     # was expecting that for each row it would increment so row_1, row_2 etc but not currently happening
+        #     print(f"this is the key {key}")
+        #     # print(request.form['row_2_stepnumber'])
+        #     # Check if the key ends with stepnumber to identify the dynamically added rows
+        #     # if key.startswith('row_'):
+        #     #     # Extract the step number and description from the form data
+        #     #     # for some reason yet for me to understand the javascript id's - the key takes you to the step number
+        #     #     step_number = request.form[key]
+        #     #     # the key for the description doesnt have the description in it's title
+        #     #     step_description_key = request.form[key]
+        #     #     print(f"step number {step_number}, step desc {step_description_key}")
+        #     #     print(f"stepkey {step_description_key}")
+        #     #     step_description = request.form[step_description_key]
+        #     #     print(f"this is something {step_description}")
+        #     #     args = (step_number, step_description)
+        #     #     print(f"this is the arguments {args}")
+        #     #     # Call the stored procedure for each step number and description pair
+        #     #     cursor.callproc('insert_steps_v1', args)
+        #     #     db.commit()
+        #     if key.endswith('_stepnumber'):
+        #         # Extract the step number and description from the form data
+        #         step_number = request.form[key]
+        #         # Generate the corresponding key for the step description
+        #         step_description_key = key.replace('_stepnumber', '_stepdescription')
+        #         # Get the step description from the form data using the generated key
+        #         step_description = request.form[step_description_key]
+        #         # Process the step number and description as needed
+        #         print(f"Step Number: {step_number}, Step Description: {step_description}")
+        #         cursor.callproc('insert_steps_v1', step_number, step_description)
+        #         db.commit()
+        num_rows = int(request.form.get('num_rows', 0))
 
+        # Iterate over each row and process step number and description
+        for i in range(1, num_rows + 1):
+            step_number_key = f'row_{i}_stepnumber'
+            step_description_key = f'row_{i}_stepdescription'
+
+            # Extract step number and description from the form data
+            step_number = request.form.get(step_number_key)
+            step_description = request.form.get(step_description_key)
+            print(step_number, step_description)
+            # Call the stored procedure with the step number and description
+            args = (step_number, step_description)
+            cursor.callproc('insert_steps_v1', args)
+            db.commit()
         return redirect(url_for('successsubmit'))
     return render_template('submitRecipepage4.html', title='Recipe')
 
