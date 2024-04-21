@@ -1,84 +1,18 @@
-////getting the element in the html with the ID, when that element is clicked it will run the addNewRow function
-//document.getElementById('addRowBtn').addEventListener('click', function(event) {event.preventDefault();
-////    console.log("Button clicked!");
-
-////console.log(ingredients)
-//
-////getting the element in the html with the ID, when that element is clicked it will run the addNewRow function
-//document.getElementById('addRowBtn').addEventListener('click', function(event) {event.preventDefault();
-////    console.log("Button clicked!");
-//    var count =1;
-//    ingredients = document.querySelector('#ingredientname')
-//    quantity = document.querySelector('#quantity')
-//    unit = document.querySelector('#unitname')
-////    getting the container where the row will be added
-//    var container = document.getElementById('#containerIngredients');
-////    adding one row to the container
-//    container.append(addNewRow(ingredients,quantity,unit));
-//   });
-//
-//function addNewRow(ingredients,quantity,unit){
-////creates a new row starting off with the first div from the row
-//    var newRow = document.createElement("div")
-//        newRow.classList.add("row", "g-3", "align-items-center")
-//
-//
-//        newRow.innerHTML = `
-//            <div class="row g-3 align-items-center">
-//                <div class="col-auto">
-//                    <div class="d-flex">
-//                        <div class="p-2">
-//                            <label for="ingredientname" class="col-form-label">Select an ingredient</label>
-//                            <select class="form-select" aria-label="Default select example">
-//                                <option selected>Select an ingredient</option>
-//        //                        {% for ingredient in ingredientname %}
-//        //                            <option value="{{ ingredient }}">{{ingredientname}}</option>
-//        //                        {% endfor %}
-//                                    <option value="${ingredients}" selected>${ingredients}</option>
-//                            </select>
-//                        </div>
-//                    </div>
-//                </div>
-//                <div class="col-auto">
-//                    <div class="p-2">
-//                        <label for="quantity" class="col-form-label">Quantity:</label>
-//                        <input type="number" min="1" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
-//                    </div>
-//                </div>
-//                <div class="col-auto">
-//                    <div class="p-2">
-//                        <label for="unit" class="col-form-label">Select a unit</label>
-//                        <select class="form-select" aria-label="Default select example">
-//                            <option selected>Select a unit</option>
-//                            {% for unit in unitname %}
-//                                <option value="{{ unit }}">{{ unitname }}</option>
-//                            {% endfor %}
-//                        </select>
-//                    </div>
-//                </div>
-//            </div>
-//        `;
-//
-//
-//
-////returning the new row which can then be appended when the function is run
-//            return(newRow)
-//
-//            console.log(newRow);
-//}
 document.addEventListener('DOMContentLoaded', function() {
-    // Your JavaScript code here
+//Setting a count of one - get the value of number of rows from the hidden input type.
+//this value is to track the number of rows added so we can use this when we are iterating over the rows in the app route
     var count = 1;
      const numRowsInput = document.getElementById('num_rows');
-    const btn = document.getElementById('addRowBtn');
+    const btn = document.getElementById('addRowBtn')
     console.log(btn);
     if (btn) {
         btn.addEventListener('click', function(event) {
             event.preventDefault();
+            console.log("Button clicked.");
              count++;
         console.log("Count:", count);
         numRowsInput.value = count;
-        console.log("number of rows:", numRows);
+        console.log("number of rows:", numRowsInput);
         var containerstep = document.getElementById('containerStep');
         containerstep.append(addNewRowStep(count));
 //        var numRows = document.getElementById('num_rows').value;
@@ -87,9 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error("Element with ID 'addRowBtnStep' not found");
     }
-//    document.getElementById('addRowBtnStep').addEventListener('click', function(event) {
-//        event.preventDefault();
 ;
+
 
     function addNewRowStep(count) {
         var rowId = 'row_' + count;

@@ -20,7 +20,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select class="form-control" id="ingredientname" name="ingredientname">
+                            <select class="form-control" id="ingredientname1" name="ingredientname1">
                                 <option value="none" selected disabled hidden>Select an ingredient</option>
                         {% for ingredient in ingredientname|sort%}
                             <option value="{{ ingredient }}">{{ ingredient }}</option>
@@ -28,33 +28,34 @@
                             </select>
                         </td>
                         <td>
-                            <input type="number" min="0.25" step="0.25" id="quantity" name="quantity" class="form-control" aria-describedby="quantity">
+                            <input type="number" min="0.25" step="0.25" id="quantity1" name="quantity1" class="form-control" aria-describedby="quantity1">
                         </td>
-                        <td><select class="form-control" id="unitname" name="unitname">
+                        <td>
+                            <select class="form-control" id="unitname1" name="unitname1">
                             <option value="none" selected disabled hidden>Select a measurement</option>
                             {% for unit in unitname|sort %}
                             <option value="{{ unit }}">{{ unit }}</option>
                             {% endfor %}
-                        </td>
+                            </td>
                     </tr>
                 <tr>
                          <td>
                             <select class="form-control" id="ingredientname2" name="ingredientname2">
                                 <option value="none" selected disabled hidden>Select an ingredient</option>
                         {% for ingredient in ingredientname|sort%}
-                            <option value="{{ ingredient }}">{{ ingredient }}</option>
+                                <option value="{{ ingredient }}">{{ ingredient }}</option>
                         {% endfor %}
                             </select>
                         </td>
                         <td>
-                            <input type="number" min="0.25" step="0.25" id="quantity2" name="quantity2" class="form-control" aria-describedby="quantity">
+                            <input type="number" min="0.25" step="0.25" id="quantity2" name="quantity2" class="form-control" aria-describedby="quantity2">
                         </td>
                         <td><select class="form-control" id="unitname2" name="unitname2">
                             <option value="none" selected disabled hidden>Select a measurement</option>
                             {% for unit in unitname|sort %}
                             <option value="{{ unit }}">{{ unit }}</option>
                             {% endfor %}
-                        </td>
+                            </td>
                     </tr>
                 <tr>
                          <td>
@@ -66,7 +67,7 @@
                             </select>
                         </td>
                         <td>
-                            <input type="number" min="0.25" step="0.25" id="quantity3" name="quantity3" class="form-control" aria-describedby="quantity">
+                            <input type="number" min="0.25" step="0.25" id="quantity3" name="quantity3" class="form-control" aria-describedby="quantity3">
                         </td>
                         <td><select class="form-control" id="unitname3" name="unitname3">
                             <option value="none" selected disabled hidden>Select a measurement</option>

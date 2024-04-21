@@ -2,9 +2,11 @@
 
 {% block body_content %}
  <main>
-        <h1>Add your own recipe!</h1>
+
         <div class="container">
             <section>
+                <br>
+                <h1>Add your own recipe!</h1>
                 <h3 id="central-text">We want your recipes!</h3>
                 <br>
 <!--            target self loads response in the same window-->
@@ -63,14 +65,18 @@
                     <table id="durationtime">
                             <tr>
                                 <th>Preparation Time</th>
+                                <th>Select</th>
                                 <th>Cooking Time</th>
+                                <th>Select</th>
                             </tr>
                             {% for duration in durationdata %}
                             <tr>
                                 <td>{{ duration.prepTime }}</td>
-                                <td>{{ duration.cookTime }}</td>
                                 <td>
                                     <input name="prepTime" type="checkbox" value="{{ duration.prepTime }}">
+                                </td>
+                                <td>{{ duration.cookTime }}</td>
+                                <td>
                                     <input name="cookTime" type="checkbox" value="{{ duration.cookTime }}">
                                 </td>
                             </tr>
