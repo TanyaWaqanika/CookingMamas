@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="col-auto">
                 <div class="mb-3">
                     <div class="d-flex">
-                        <label for="${rowId}_stepnumber" class="form-label">Step Number</label>
+                        <label for="${rowId}_stepnumber" class="col-form-label">Step Number</label>
                             <input type="number" min="1" id="${rowId}_stepnumber" name="${rowId}_stepnumber" class="form-control" aria-describedby="${rowId}_stepnumber" style="width: 100px;">
-                        <label for="${rowId}_stepdescription" class="form-label">Step Description</label>
+                        <label for="${rowId}_stepdescription" class="col-form-label">Step Description</label>
                             <textarea class="form-control" id="${rowId}_stepdescription" name="${rowId}_stepdescription" rows="3" cols="100"></textarea>
                     </div>
                 </div>

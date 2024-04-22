@@ -7,7 +7,7 @@
             <section>
                 <br>
                 <h1>Add your own recipe!</h1>
-                <h3 id="central-text">We want your recipes!</h3>
+                <h3 id="central-text">Tell us about your recipe</h3>
                 <br>
 <!--            target self loads response in the same window-->
                 <form action="" target="_self" autocomplete="on" method="POST">
@@ -28,7 +28,7 @@
                     <div class="row g-3 align-items-center">
                       <div class="col-auto">
                         <div class="mb-3">
-                            <label for="recipeDescription" class="form-label">Describe your recipe</label>
+                            <label for="recipeDescription" class="col-form-label">Describe your recipe</label>
                              <textarea class="form-control" id="recipeDescription" name="recipeDescription" rows="3" cols="100"></textarea>
                         </div>
                       </div>
@@ -53,11 +53,12 @@
 
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
+                                <div class="d-flex">
                                 <label for="serving" class="col-form-label">How many people does it serve:  </label>
     <!--                                step added so that quantity can be in decimal as well as integer-->
     <!--                                changes min to 1 so that users unable to choose 0 for any quantity-->
                                     <input type="number" min="1" step="1" id="serving" name="serving" class="form-control" aria-describedby="serving">
-
+                                </div>
                             </div>
                         </diV>
                     <br>

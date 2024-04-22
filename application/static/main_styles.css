@@ -16,7 +16,7 @@ footer {
   }
 
 h1 {
-    font-family: verdana;
+    font-family: lemon;
     background-color:rgba(255,255,255,.8);
      text-align: center;
  }
@@ -158,7 +158,7 @@ color: #CCCFFB;
 
 
  #durationtime {
-  font-family: "Lobster", sans-serif;
+  font-family: "lemon", sans-serif;
   font-weight: 700;
   font-style: normal;
   border-collapse: collapse;
@@ -230,3 +230,22 @@ color: #CCCFFB;
      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
+.col-form-label{
+    font-family: lemon;
+}
+
+h2, h3, h5 {
+font-family: lemon;
+}
+
+.form-label{
+
+}
+
+.navbar-brand{
+font-family: lemon;
+}
+
+.nav-item{
+font-family: lemon;
+}
