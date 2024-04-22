@@ -39,8 +39,8 @@
         <input type="hidden" id="get_recipes" value="{{ name }}">
 <!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
 
-
- <div class="col-lg-4">
+ <div class="row">
+    <div class="col-lg-4">
                 <div class="recipe-card">
                     <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
                     <div class="card-body">
@@ -50,8 +50,11 @@
                     </div>
                 </div>
             </div>
+     </div>
 
 {% endfor %}
+
+        <!--
 
         <div class="row">
             <div class="col-md-4">
@@ -90,6 +93,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
          </div>
     </section>
