@@ -8,9 +8,9 @@ recipedb = mysql.connector.connect(
     host="localhost",
     user="root",
     # Windows password
-     password="Pa$$w0rd",
+    password="Pa$$w0rd",
     # Mac password 
-   #  password="",
+    #  password="",
     database="recipedb"
 )
 
@@ -94,7 +94,7 @@ def get_recipe_by_id(recipe_id):
 
     return recipe
 
-print(get_recipe_by_id(24))
+
 # code to filter recipes by dietary req
 # def filter_by_dietary():
 #     cursor = recipedb.cursor()
@@ -111,8 +111,9 @@ def filter_by_dietary(selected_dietary):
 
     # Fetch recipes based on the selected dietary requirement
     sql = """
-        SELECT recipeName FROM recipe 
+        SELECT recipe.recipeId, recipeName, recipeDescription, image.imageSource FROM recipe 
         JOIN recipedietaryrequirement ON recipe.recipeId = recipedietaryrequirement.recipeId 
+        LEFT JOIN image ON recipe.recipeID = image.recipeID 
         WHERE recipedietaryrequirement.dietaryID = %s
     """
     mycursor.execute(sql, (dietary_id,))
@@ -120,7 +121,15 @@ def filter_by_dietary(selected_dietary):
     return recipes
 
 
-print(filter_by_dietary("Vegan"))
+# print(filter_by_dietary("Vegan"))
+
+def search(selected_recipe):
+    cursor = recipedb.cursor()
+    cursor.execute(
+        "SELECT recipe.recipeName, recipe.recipeDescription FROM recipe WHERE recipe.recipeName LIKE %s OR recipe.recipeDescription LIKE %s",
+        (selected_recipe, selected_recipe))
+    conn.commit()
+    data = cursor.fetchall()
 
 
 def get_recipe_title():
@@ -138,6 +147,51 @@ def get_recipe_title():
     cursor.close()  # Close the cursor
     return recipe_titles
 
+
+
+def get_random_recipes():
+    cursor = recipedb.cursor()
+    sql = """SELECT recipe.recipeID, recipe.recipeName, recipe.recipeDescription, image.imageSource
+              FROM recipe 
+              LEFT JOIN image ON recipe.recipeID = image.recipeID 
+              ORDER BY RAND() LIMIT 3
+              """
+    cursor.execute(sql)
+    # changed this as what this was doing was getting the first row only
+    # recipe_titles = [row[0] for row in cursor.fetchall()]
+    # fetchall has taken all rows
+    random_recipe = cursor.fetchall()
+    print("Total number of rows in table: ", cursor.rowcount)
+    cursor.close()  # Close the cursor
+    return random_recipe
+
+
+print(get_random_recipes())
+
+
+
+# print(get_recipe_title())
+
+
+# removed this function because your function above already gets the description
+# commented it out in case it is used anywhere else but think you're ok with what you've got above
+# def get_recipe_desc():
+#     cursor = recipedb.cursor()
+#     sql = "SELECT recipeDescription from recipe"
+#     cursor.execute(sql)
+#     recipe_desc = [row[0] for row in cursor.fetchall()]
+#     cursor.close()  # Close the cursor
+#     return recipe_desc
+
+# def search():
+#    cursor = recipedb.cursor()
+#   sql = "SELECT * from recipe where name = %s"
+#    cursor.executemany(sql, request.form['search'])
+#    results = cursor.fetchall()
+#    return results
+
+
+# print(search())
 
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():

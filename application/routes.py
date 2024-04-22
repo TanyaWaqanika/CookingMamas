@@ -1,6 +1,7 @@
 from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
-    get_ingredient_names, get_unit_types, get_recipe_title, get_cuisine_types, get_duration, filter_by_dietary
+    get_ingredient_names, get_unit_types, get_recipe_title, get_cuisine_types, get_duration, filter_by_dietary, \
+    get_random_recipes
 
 from application import app
 import mysql.connector
@@ -15,22 +16,26 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
+
 @app.route('/')
 @app.route('/home')
 def home():
-    veganFilter = filter_by_dietary("Vegan")
+    # veganFilter = filter_by_dietary("Vegan")
 
-    return render_template('home.html', title='Home', veganFilter=veganFilter)
+    return render_template('home.html', title='Home') # veganFilter=veganFilter)
+
 
 @app.route('/about/<name>')
 @app.route('/about')
 def about(name):
     return render_template('about.html', name=name.capitalize(), colour=['red', 'yellow', 'green'])
 
+
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
-    return render_template('recipe.html', recipe=recipes)
+    randomrec = get_random_recipes()
+    return render_template('recipe.html', recipe=recipes, randomrec=randomrec)
 
 
 # TO DO Create the route that will help populate the options for the database form
@@ -45,7 +50,7 @@ def format_timedelta_filter(value):
     return '{:02}:{:02}:{:02}'.format(hours, minutes, seconds)
 
 
-@app.route('/submitrecipepage1', methods=['GET','POST'])
+@app.route('/submitrecipepage1', methods=['GET', 'POST'])
 def submitrecipepage1():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
     cuisinetype = get_cuisine_types()
@@ -58,7 +63,7 @@ def submitrecipepage1():
         preptime = request.form['prepTime']
         cooktime = request.form['cookTime']
         servingsize = request.form['serving']
-        args= (recipename,recipedescription,cuisinetype, preptime, cooktime, servingsize)
+        args = (recipename, recipedescription, cuisinetype, preptime, cooktime, servingsize)
         try:
             cursor.callproc('insert_recipe_v1', args)
             db.commit()  # If autocommit is disabled
@@ -67,7 +72,7 @@ def submitrecipepage1():
         except mysql.connector.Error as err:
             print("Error calling stored procedure: {}".format(err))
         return redirect(url_for('submitrecipepage2'))
-    return render_template('submitRecipepage1.html', title='Recipe', cuisinetype = cuisinetype, durationdata = durationdata)
+    return render_template('submitRecipepage1.html', title='Recipe', cuisinetype=cuisinetype, durationdata=durationdata)
 
 
 # the sessions are meant to save the data submitted on the form page so that when we get to the end of the form we can then take that data and use it
@@ -166,17 +171,32 @@ def successsubmit():
     return render_template('submitRecipeSuccess.html', title='Success', recipeid=recipeid)
 
 
-@app.route('/allrecipes', methods=["POST", "GET"])
+@app.route('/allrecipes', methods=['GET', 'POST'])
 def allrecipes():
     recipename = get_recipe_title()
     ingredientname = get_ingredient_names()
     dietarytype = get_dietary_types()
-    if request.form.get('d_enabled') == 'on':
-        vegan = filter_by_dietary("Vegan")
+
+    if request.method == 'POST':
+        request.form.getlist('glutenType')
+        return filter_by_dietary("Gluten Free")
     return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname, dietarytype=dietarytype)
+
+
+@app.route('/submitsuccess')
+def success_submit():
+    return render_template('submitRecipeSuccess.html', title='Success')
 
 
 @app.route('/recipe')
 def recipe_landing():
     return render_template('recipeLanding.html')
+
+
+# TODO: Add dietary types - hardcode - copy this but change the dietary type
+@app.route('/glutenfree', methods=['GET', 'POST'])
+def glutenfree():
+    dietarytype = filter_by_dietary('Gluten free')
+    
+    return render_template('glutenfree.html', dietarytype=dietarytype)
 

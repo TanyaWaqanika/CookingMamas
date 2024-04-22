@@ -3,6 +3,21 @@
 {% block body_content %}
 <body>
 
+ <form action="#" class="searchform order-sm-start order-lg-last">
+             <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search" name="recipe">
+
+                 <!-- search button -->
+                 <button class="btn btn-outline-success" type="submit">Search<span class="fa fa-search"></span></button>
+            </div>
+        </form>
+<centre>
+    {% for item in data %}
+    <tr>
+        <td> {{ item[0] }}</td>
+    </tr>
+</centre>
+
 </body>
 </html>
 {% endblock %}

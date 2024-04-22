@@ -28,17 +28,42 @@
 
 
 <div class="container">
-        <div style="margin-top: 50px;"></div>
+    <div style="margin-top: 30px;"></div>
+        <h1>Feeling Peckish?</h1>
+        <div style="margin-top: 25px;"></div>
+
+<!-- sends checkbox input to flask
      <div class="row">
+         <form action="/allrecipes" method="POST">
+
   {% for diet in dietarytype|sort %}
-         <form action="/allrecipes" method="GET">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="d_enabled" value="on">
+        <input class="form-check-input" type="checkbox" name="dietFilter" value="{{ diet }}">
         <label class="form-check-label" id="dietarytype"  for="dietarytype">{{ diet }}</label>
     </div>
-             </form>
- {% endfor %}
 
+ {% endfor %}
+             <input type="Submit" value="Diet Type">
+              </form>
+-->
+
+           <div class="row">
+         <form action="/allrecipes" method="POST">
+
+             <!-- make checkboxes for each filter -->
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="glutenType" value="{{ dietarytype[0] }}">
+        <label class="form-check-label" id="glutentype" >{{ dietarytype[0] }}</label>
+    </div>
+
+             <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="HalalFilter" value="{{ dietarytype[1] }}">
+        <label class="form-check-label" id="halaltype" >{{ dietarytype[1] }}</label>
+    </div>
+
+
+             <input type="Submit" value="Diet Type">
+              </form>
 
 {% for recipe in recipename %}
 
@@ -47,8 +72,8 @@
 
 
  <div class="col-lg-4">
-                <div class="recipe-card">
-                    <img src="/static/{{ recipe[3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                <div class="recipe-card" style="margin-bottom: 30px">
+                    <img src="/static/{{ recipe [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
                     <div class="card-body">
                         <h5 class="card-title">{{ recipe [1] }}</h5>
                         <p class="card-text">{{ recipe [2] }}</p>
