@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
-    get_ingredient_names, get_unit_types, get_recipe_title, filter_by_dietary
+    get_ingredient_names, get_unit_types, get_recipe_title, filter_by_dietary, get_random_recipes
 from application import app
 
 
@@ -15,7 +15,8 @@ def home():
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
-    return render_template('recipe.html', recipe=recipes)
+    randomrec = get_random_recipes()
+    return render_template('recipe.html', recipe=recipes, randomrec=randomrec)
 
 
 # TO DO Create the route that will help populate the options for the database form

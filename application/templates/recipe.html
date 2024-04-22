@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-    <div class="container">
+    <section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
+  <div class="container">
+    <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
         <div class="image-container">
             <img src="/static/{{ recipe.imageSource }}">
         </div>
@@ -32,6 +34,25 @@
         <h3>Still hungry? Why not check out <a href="/allrecipes">some other recipes?</a></h3>
 
         <h1>Suggested Recipes</h1>
+        {% for suggestion in randomrec %}
+
+        <input type="hidden" id="get_recipes" value="{{ name }}">
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
+
+
+ <div class="col-lg-4">
+                <div class="recipe-card">
+                    <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ suggestion [1] }}</h5>
+                        <p class="card-text">{{ suggestion [2] }}</p>
+                        <a href="/recipe/{{ suggestion [0] }} " class="button-value">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+{% endfor %}
+
         <div class="row">
             <div class="col-md-4">
                 <div class="recipe-card">
@@ -70,5 +91,7 @@
             </div>
         </div>
     </div>
+         </div>
+    </section>
 
 {% endblock %}
