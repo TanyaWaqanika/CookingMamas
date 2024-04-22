@@ -7,9 +7,9 @@ from application import app
 @app.route('/')
 @app.route('/home')
 def home():
-    veganFilter = filter_by_dietary("Vegan")
+    # veganFilter = filter_by_dietary("Vegan")
 
-    return render_template('home.html', title='Home', veganFilter=veganFilter)
+    return render_template('home.html', title='Home') # veganFilter=veganFilter)
 
 
 @app.route('/recipe/<int:recipe_id>')
@@ -51,3 +51,6 @@ def success_submit():
 @app.route('/recipe')
 def recipe_landing():
     return render_template('recipeLanding.html')
+
+
+

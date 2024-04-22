@@ -120,7 +120,13 @@ def filter_by_dietary(selected_dietary):
     return recipes
 
 
-print(filter_by_dietary("Vegan"))
+# print(filter_by_dietary("Vegan"))
+
+def search(selected_recipe):
+    cursor = recipedb.cursor()
+    cursor.execute("SELECT recipe.recipeName, recipe.recipeDescription FROM recipe WHERE recipe.recipeName LIKE %s OR recipe.recipeDescription LIKE %s",(selected_recipe , selected_recipe))
+    conn.commit()
+    data = cursor.fetchall()
 
 
 def get_recipe_title():
@@ -139,7 +145,7 @@ def get_recipe_title():
     return recipe_titles
 
 
-print(get_recipe_title())
+# print(get_recipe_title())
 
 
 # removed this function because your function above already gets the description
@@ -151,6 +157,16 @@ print(get_recipe_title())
 #     recipe_desc = [row[0] for row in cursor.fetchall()]
 #     cursor.close()  # Close the cursor
 #     return recipe_desc
+
+# def search():
+#    cursor = recipedb.cursor()
+#   sql = "SELECT * from recipe where name = %s"
+#    cursor.executemany(sql, request.form['search'])
+#    results = cursor.fetchall()
+#    return results
+
+
+# print(search())
 
 
 # function to get all the dietaryType from the sql database so we can present on the front end
