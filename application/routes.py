@@ -43,7 +43,7 @@ def recipe(recipe_id):
 @app.template_filter('format_timedelta')
 def format_timedelta_filter(value):
     if value is None:
-        return ''  # Or any other default value you prefer
+        return ''
 
     hours, remainder = divmod(value.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
@@ -66,16 +66,15 @@ def submitrecipepage1():
         args = (recipename, recipedescription, cuisinetype, preptime, cooktime, servingsize)
         try:
             cursor.callproc('insert_recipe_v1', args)
-            db.commit()  # If autocommit is disabled
+            db.commit()
 
-        # cursor.callproc('insert_recipe_v1', args)
         except mysql.connector.Error as err:
             print("Error calling stored procedure: {}".format(err))
         return redirect(url_for('submitrecipepage2'))
     return render_template('submitRecipepage1.html', title='Recipe', cuisinetype=cuisinetype, durationdata=durationdata)
 
 
-# the sessions are meant to save the data submitted on the form page so that when we get to the end of the form we can then take that data and use it
+# submitting the data to the database for each page
 @app.route('/submitrecipepage2', methods=['GET', 'POST'])
 def submitrecipepage2():
     # uses the function in data access to get the list of dietary types and assigns to variable dietary type
@@ -88,11 +87,13 @@ def submitrecipepage2():
         toolname = ','.join(request.form.getlist('tool'))  # Convert list to comma-separated string
         print(dietarytype, allergytype, toolname)
         cursor.callproc('insert_dietary_v1', (dietarytype,))
-        db.commit()  # If autocommit is disabled
+        db.commit()
         cursor.callproc('insert_allergy_v1', (allergytype,))
-        db.commit()  # If autocommit is disabled
+        db.commit()
         cursor.callproc('insert_tool_v1', (toolname,))
-        db.commit()  # If autocommit is disabled
+        db.commit()
+        cursor.callproc('insert_image_v1', ())
+        db.commit()
         return redirect(url_for('submitrecipepage3'))
     return render_template('submitRecipepage2.html', title='Recipe', dietarytype=dietarytype, allergytype=allergytype,
                            toolname=toolname)
