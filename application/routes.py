@@ -168,7 +168,6 @@ def successsubmit():
     sql = """SELECT MAX(recipeID) FROM recipe;"""
     cursor.execute(sql)
     recipeid = [row[0] for row in cursor.fetchall()]
-    print(recipeid)
     return render_template('submitRecipeSuccess.html', title='Success', recipeid=recipeid)
 
 

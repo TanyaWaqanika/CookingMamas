@@ -40,7 +40,6 @@ def insert_sample_data():
 
 def get_recipe_by_id(recipe_id):
     mycursor = recipedb.cursor(dictionary=True)
-
     # Query to fetch recipe details by ID
     sql = """SELECT recipe.recipeName, recipe.recipeDescription, recipe.servingSize,
     cuisine.cuisine_type, tool.toolName, 
@@ -57,7 +56,6 @@ def get_recipe_by_id(recipe_id):
 
     # Fetch the recipe details
     recipe = mycursor.fetchone()
-
     # Query to fetch steps for the recipe
     steps_sql = """
        SELECT stepNumber, stepDescription
@@ -69,7 +67,6 @@ def get_recipe_by_id(recipe_id):
 
     # Fetch the steps for the recipe
     steps = mycursor.fetchall()
-
     # Add steps to the recipe dictionary
     recipe['steps'] = steps
 
@@ -121,8 +118,6 @@ def filter_by_dietary(selected_dietary):
     return recipes
 
 
-# print(filter_by_dietary("Vegan"))
-
 def search(selected_recipe):
     cursor = recipedb.cursor()
     cursor.execute(
@@ -168,30 +163,6 @@ def get_random_recipes():
 
 print(get_random_recipes())
 
-
-
-# print(get_recipe_title())
-
-
-# removed this function because your function above already gets the description
-# commented it out in case it is used anywhere else but think you're ok with what you've got above
-# def get_recipe_desc():
-#     cursor = recipedb.cursor()
-#     sql = "SELECT recipeDescription from recipe"
-#     cursor.execute(sql)
-#     recipe_desc = [row[0] for row in cursor.fetchall()]
-#     cursor.close()  # Close the cursor
-#     return recipe_desc
-
-# def search():
-#    cursor = recipedb.cursor()
-#   sql = "SELECT * from recipe where name = %s"
-#    cursor.executemany(sql, request.form['search'])
-#    results = cursor.fetchall()
-#    return results
-
-
-# print(search())
 
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():
