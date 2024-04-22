@@ -213,6 +213,7 @@ color: #CCCFFB;
 
 .recipe-card-img-top {
     border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     height: 60%; /* Set the image height to 60% of the card height */
     object-fit: cover; /* Ensure the image covers the container */
 }
