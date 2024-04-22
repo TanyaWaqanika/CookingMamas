@@ -125,7 +125,9 @@ def filter_by_dietary(selected_dietary):
 
 def search(selected_recipe):
     cursor = recipedb.cursor()
-    cursor.execute("SELECT recipe.recipeName, recipe.recipeDescription FROM recipe WHERE recipe.recipeName LIKE %s OR recipe.recipeDescription LIKE %s",(selected_recipe , selected_recipe))
+    cursor.execute(
+        "SELECT recipe.recipeName, recipe.recipeDescription FROM recipe WHERE recipe.recipeName LIKE %s OR recipe.recipeDescription LIKE %s",
+        (selected_recipe, selected_recipe))
     conn.commit()
     data = cursor.fetchall()
 
@@ -145,6 +147,30 @@ def get_recipe_title():
     cursor.close()  # Close the cursor
     return recipe_titles
 
+<<<<<<< HEAD
+=======
+
+def get_random_recipes():
+    cursor = recipedb.cursor()
+    sql = """SELECT recipe.recipeID, recipe.recipeName, recipe.recipeDescription, image.imageSource
+              FROM recipe 
+              LEFT JOIN image ON recipe.recipeID = image.recipeID 
+              ORDER BY RAND() LIMIT 3
+              """
+    cursor.execute(sql)
+    # changed this as what this was doing was getting the first row only
+    # recipe_titles = [row[0] for row in cursor.fetchall()]
+    # fetchall has taken all rows
+    random_recipe = cursor.fetchall()
+    print("Total number of rows in table: ", cursor.rowcount)
+    cursor.close()  # Close the cursor
+    return random_recipe
+
+
+print(get_random_recipes())
+
+
+>>>>>>> filter_test
 # print(get_recipe_title())
 
 
