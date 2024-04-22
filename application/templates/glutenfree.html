@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+
+<div class="container">
+    <div style="margin-top: 30px;"></div>
+        <h1>Feeling Peckish?</h1>
+        <div style="margin-top: 25px;"></div>
+    <div class="row">
+
+{% for diet in dietarytype %}
+
+<input type="hidden" id="get_recipes" value="{{ name }}">
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
+
+
+ <div class="col-lg-4">
+                <div class="recipe-card">
+                    <img src="/static/{{ diet [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ diet [1] }}</h5>
+                        <p class="card-text">{{ diet [2] }}</p>
+                        <a href="/recipe/{{ diet [0] }} " class="button-value">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+{% endfor %}
+      </div>
+</div>
+
+
+
+{% endblock %}

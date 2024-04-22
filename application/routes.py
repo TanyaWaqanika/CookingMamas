@@ -186,10 +186,14 @@ def success_submit():
     return render_template('submitRecipeSuccess.html', title='Success')
 
 
-
 @app.route('/recipe')
 def recipe_landing():
     return render_template('recipeLanding.html')
 
 
+@app.route('/glutenfree', methods=['GET', 'POST'])
+def glutenfree():
+    dietarytype = filter_by_dietary('Gluten free')
+    
+    return render_template('glutenfree.html', dietarytype=dietarytype)
 

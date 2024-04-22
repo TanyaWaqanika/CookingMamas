@@ -94,7 +94,7 @@ def get_recipe_by_id(recipe_id):
 
     return recipe
 
-print(get_recipe_by_id(24))
+
 # code to filter recipes by dietary req
 # def filter_by_dietary():
 #     cursor = recipedb.cursor()
@@ -111,8 +111,9 @@ def filter_by_dietary(selected_dietary):
 
     # Fetch recipes based on the selected dietary requirement
     sql = """
-        SELECT recipeName, recipeDescription FROM recipe 
+        SELECT recipe.recipeId, recipeName, recipeDescription, image.imageSource FROM recipe 
         JOIN recipedietaryrequirement ON recipe.recipeId = recipedietaryrequirement.recipeId 
+        LEFT JOIN image ON recipe.recipeID = image.recipeID 
         WHERE recipedietaryrequirement.dietaryID = %s
     """
     mycursor.execute(sql, (dietary_id,))
