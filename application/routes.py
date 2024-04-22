@@ -174,12 +174,7 @@ def allrecipes():
     recipename = get_recipe_title()
     ingredientname = get_ingredient_names()
     dietarytype = get_dietary_types()
-<<<<<<< HEAD
-    if request.form.get('d_enabled') == 'on':
-        vegan = filter_by_dietary("Vegan")
-    return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname,
-                           dietarytype=dietarytype)
-=======
+
     if request.method == 'POST':
         request.form.getlist('glutenType')
         return filter_by_dietary("Gluten Free")
@@ -189,7 +184,7 @@ def allrecipes():
 @app.route('/submitsuccess')
 def success_submit():
     return render_template('submitRecipeSuccess.html', title='Success')
->>>>>>> filter_test
+
 
 
 @app.route('/recipe')

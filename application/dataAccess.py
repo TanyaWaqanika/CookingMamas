@@ -144,9 +144,6 @@ def get_recipe_title():
     cursor.close()  # Close the cursor
     return recipe_titles
 
-
-<<<<<<< HEAD
-=======
 # print(get_recipe_title())
 
 
@@ -170,8 +167,6 @@ def get_recipe_title():
 
 # print(search())
 
-
->>>>>>> filter_test
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():
     cursor = recipedb.cursor()
