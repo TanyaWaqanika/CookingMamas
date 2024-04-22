@@ -147,8 +147,7 @@ def get_recipe_title():
     cursor.close()  # Close the cursor
     return recipe_titles
 
-<<<<<<< HEAD
-=======
+
 
 def get_random_recipes():
     cursor = recipedb.cursor()
@@ -170,7 +169,7 @@ def get_random_recipes():
 print(get_random_recipes())
 
 
->>>>>>> filter_test
+
 # print(get_recipe_title())
 
 
