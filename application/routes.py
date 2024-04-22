@@ -23,14 +23,12 @@ def home():
 
     return render_template('home.html', title='Home', veganFilter=veganFilter)
 
+
 @app.route('/about/<name>')
 @app.route('/about')
 def about(name):
     return render_template('about.html', name=name.capitalize(), colour=['red', 'yellow', 'green'])
-<<<<<<< HEAD
 
-=======
->>>>>>> 4e1da342b0d529c7918af76c21fcb68617e0db09
 
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
@@ -185,4 +183,3 @@ def allrecipes():
 @app.route('/recipe')
 def recipe_landing():
     return render_template('recipeLanding.html')
-
