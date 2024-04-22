@@ -229,10 +229,18 @@ color: #CCCFFB;
     font-family: lemon;
 }
 
-h3, h5 {
+h2, h3, h5 {
 font-family: lemon;
 }
 
 .form-label{
 
+}
+
+.navbar-brand{
+font-family: lemon;
+}
+
+.nav-item{
+font-family: lemon;
 }

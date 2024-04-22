@@ -94,7 +94,7 @@ def get_recipe_by_id(recipe_id):
 
     return recipe
 
-
+print(get_recipe_by_id(24))
 # code to filter recipes by dietary req
 # def filter_by_dietary():
 #     cursor = recipedb.cursor()
