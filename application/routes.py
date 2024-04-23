@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, redirect, session
 from application.dataAccess import get_recipe_by_id, get_dietary_types, get_allergy_types, get_tool_names, \
     get_ingredient_names, get_unit_types, get_recipe_title, get_cuisine_types, get_duration, filter_by_dietary, \
-    get_random_recipes
+    get_random_recipes, get_diet_req
 
 from application import app
 import mysql.connector
@@ -191,30 +191,37 @@ def recipe_landing():
 
 
 # TODO: Add dietary types - hardcode - copy this but change the dietary type
-@app.route('/glutenfree', methods=['GET', 'POST'])
+@app.route('/glutenfree')
 def glutenfree():
     dietarytype = filter_by_dietary('Gluten free')
     return render_template('glutenfree.html', dietarytype=dietarytype, title='Gluten Free')
 
 
-@app.route('/vegan', methods=['GET', 'POST'])
+@app.route('/vegan')
 def vegan():
     dietarytype = filter_by_dietary('Vegan')
     return render_template('vegan.html', dietarytype=dietarytype, title='Vegan')
 
 
-@app.route('/vegetarian', methods=['GET', 'POST'])
+@app.route('/vegetarian')
 def vegetarian():
     dietarytype = filter_by_dietary('Vegetarian')
     return render_template('vegetarian.html', dietarytype=dietarytype, title='Vegetarian')
 
 
-@app.route('/halal', methods=['GET', 'POST'])
+@app.route('/halal')
 def halal():
     dietarytype = filter_by_dietary('Halal')
     return render_template('halal.html', dietarytype=dietarytype, title='Halal')
 
-@app.route('/pescatarian', methods=['GET', 'POST'])
+
+@app.route('/pescatarian')
 def pescatarian():
     dietarytype = filter_by_dietary('Pescatarian')
     return render_template('pescatarian.html', dietarytype=dietarytype, title='Pescatarian')
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    randomrec = get_random_recipes()
+    return render_template('error404.html', randomrec=randomrec)

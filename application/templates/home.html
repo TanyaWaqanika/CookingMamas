@@ -6,69 +6,66 @@
 <!-- -->
 
 <!-- Option/Filter card block -->
+<div class="container">
+<div style="margin-top: 30px;"></div>
+    <img src="../static/images/heartlogo.png" class="centre" width="100">
+        <h1>Big Bites</h1>
+        <h3>On Little Budgets</h3>
+    <!-- Gluten Free -->
 
-<!-- Gluten Free -->
+    <div class="row mt-4 g-1 px-4 mb-5"> <!-- arranges cards in rows with spacing -->
+        <div class="col-6 col-md-4 col-xl-2"> <!-- changes width of containers/cards; boostrap responsive -->
+            <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <!-- creates cards and centres contents -->
+                <img src="../static/images/glutenfree.png" width="100">
+                <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/glutenfree">Gluten Free</a></span> <!-- text and hyperlink to relevant pages -->
+                </div>
+            </div>
+        </div>
 
-<div class="row mt-4 g-1 px-4 mb-5"> <!-- arranges cards in rows with spacing -->
+    <!-- Option/Filter card blocks; note these cards don't have a text hyperlink -->
 
+    <!-- Vegan -->
 
-<div class="col-6 col-md-4 col-xl-2"> <!-- changes width of containers/cards; boostrap responsive -->
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <!-- creates cards and centres contents -->
-    <img src="../static/images/glutenfree.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/glutenfree">Gluten Free</a></span> <!-- text and hyperlink to relevant pages -->
-    </div>
-  </div>
-</div>
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5">
+                <img src="../static/images/vegan.jpg" width="100">
+                <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/vegan">Vegan</a></span>
+                </div>
+            </div>
+        </div>
 
-<!-- Option/Filter card blocks; note these cards don't have a text hyperlink -->
+    <!-- Vegetarian -->
 
-  <!-- Vegan -->
-
-<div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/vegan.jpg" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/vegan">Vegan</a></span>
-    </div>
-  </div>
-</div>
-
-  <!-- Vegetarian -->
-
-  <div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/vegetarian.png" width="95">
+    <div class="col-6 col-md-4 col-xl-2">
+    <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/vegetarian.png" width="95">
     <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/vegetarian">Vegetarian</a></span>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
-  <!-- Halal -->
+    <!-- Halal -->
 
-  <div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/halal.jpg" width="90">
+    <div class="col-6 col-md-4 col-xl-2">
+    <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/halal.jpg" width="90">
     <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/halal">Halal</a></span>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
-  <!-- Pescatarian card -->
+    <!-- Pescatarian card -->
 
-  <div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/pescatarian.jpg" width="100">
+    <div class="col-6 col-md-4 col-xl-2">
+    <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/pescatarian.jpg" width="100">
     <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/pescatarian">Pescatarian</a></span>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
-</div>
-
-<section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
-  <div class="container">
-
-        <h1>Try A Bite</h1>
         <div class="row">
         {% for suggestion in randomrec %}
 
         <input type="hidden" id="get_recipes" value="{{ name }}">
-<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
+    <!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
 
 
     <div class="col-lg-4">
@@ -83,9 +80,9 @@
             </div>
 
 
-{% endfor %}
-</div>
+    {% endfor %}
+    </div>
   </div>
-  </section>
+</div>
 <!-- end of unique page content -->
 {% endblock %}

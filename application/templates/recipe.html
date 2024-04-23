@@ -2,33 +2,33 @@
 
 {% block body_content %}
     <section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
-  <div class="container">
-    <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
-        <div class="image-container">
-            <img src="/static/{{ recipe.imageSource }}">
-        </div>
+        <div class="container">
+            <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
+                <div class="image-container">
+                    <img src="/static/{{ recipe.imageSource }}">
+                </div>
 
-        <div class="recipe-details">
-            <h1>{{ recipe.recipeName }}</h1>
-            <p> {{ recipe.recipeDescription }}</p>
-            <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
-            <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
-            <p><strong>Preparation Time:</strong> {{ recipe.prepTime }}</p>
-            <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
-            <p><strong>Serving Size:</strong> {{ recipe.servingSize }}</p>
-            <p><strong>Tool Required:</strong> {{ recipe.toolName }}</p>
-            <h2>Ingredients</h2>
-            <ul>
-                {% for ingredient in recipe.ingredients %}
-                    <li>{{ ingredient.ingredientName }} - {{ ingredient.quantity }} {{ ingredient.unitName }}</li>
-                {% endfor %}
-            </ul>
-            <h2>Steps</h2>
-            <ol>
-                {% for step in recipe.steps %}
-                <li> {{ step.stepDescription }}</li>
-                {% endfor %}
-            </ol>
+                <div class="recipe-details">
+                    <h1>{{ recipe.recipeName }}</h1>
+                    <p> {{ recipe.recipeDescription }}</p>
+                    <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
+                    <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
+                    <p><strong>Preparation Time:</strong> {{ recipe.prepTime }}</p>
+                    <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
+                    <p><strong>Serving Size:</strong> {{ recipe.servingSize }}</p>
+                    <p><strong>Tool Required:</strong> {{ recipe.toolName }}</p>
+                    <h2>Ingredients</h2>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ ingredient.ingredientName }} - {{ ingredient.quantity }} {{ ingredient.unitName }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h2>Steps</h2>
+                    <ol>
+                        {% for step in recipe.steps %}
+                        <li> {{ step.stepDescription }}</li>
+                        {% endfor %}
+                    </ol>
         </div>
 
         <h3>Still hungry? Why not check out <a href="/allrecipes">some other recipes?</a></h3>

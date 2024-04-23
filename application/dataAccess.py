@@ -1,5 +1,6 @@
 import mysql.connector
 import datetime
+
 # connects website to database, database is called repdb bc I had a split second of dyslexia and forgot how recipe is
 # spelt smh
 
@@ -92,15 +93,6 @@ def get_recipe_by_id(recipe_id):
     return recipe
 
 
-# code to filter recipes by dietary req
-# def filter_by_dietary():
-#     cursor = recipedb.cursor()
-#     sql = """SELECT recipeDietaryRequirement.recipeID, recipeDietaryRequirement.dietaryID
-#             FROM recipeDietaryRequirement
-#             WHERE
-#             """
-#     cursor.execute(sql)
-
 def filter_by_dietary(selected_dietary):
     # Fetch dietary ID based on selected dietary type
     mycursor.execute("SELECT dietaryID FROM dietaryrequirement WHERE dietaryType = %s", (selected_dietary,))
@@ -118,20 +110,12 @@ def filter_by_dietary(selected_dietary):
     return recipes
 
 
-def search(selected_recipe):
-    cursor = recipedb.cursor()
-    cursor.execute(
-        "SELECT recipe.recipeName, recipe.recipeDescription FROM recipe WHERE recipe.recipeName LIKE %s OR recipe.recipeDescription LIKE %s",
-        (selected_recipe, selected_recipe))
-    conn.commit()
-    data = cursor.fetchall()
-
-
 def get_recipe_title():
     cursor = recipedb.cursor()
     sql = """SELECT recipe.recipeID, recipe.recipeName, recipe.recipeDescription, image.imageSource
            FROM recipe 
-           LEFT JOIN image ON recipe.recipeID = image.recipeID 
+           LEFT JOIN image ON recipe.recipeID = image.recipeID
+           ORDER BY recipe.recipeName ASC
            """
     cursor.execute(sql)
     # changed this as what this was doing was getting the first row only
@@ -143,6 +127,19 @@ def get_recipe_title():
     return recipe_titles
 
 
+def get_diet_req():
+    cursor = recipedb.cursor()
+    sql = """SELECT dietaryRequirement.dietaryID, dietaryRequirement.dietaryType
+    FROM dietaryRequirement
+    """
+    cursor.execute(sql)
+    diet_req = cursor.fetchall()
+    cursor.close()
+    return diet_req
+
+
+print(get_diet_req())
+
 
 def get_random_recipes():
     cursor = recipedb.cursor()
@@ -152,9 +149,6 @@ def get_random_recipes():
               ORDER BY RAND() LIMIT 3
               """
     cursor.execute(sql)
-    # changed this as what this was doing was getting the first row only
-    # recipe_titles = [row[0] for row in cursor.fetchall()]
-    # fetchall has taken all rows
     random_recipe = cursor.fetchall()
     print("Total number of rows in table: ", cursor.rowcount)
     cursor.close()  # Close the cursor
@@ -239,7 +233,3 @@ def get_duration():
         formatted_results.append(formatted_row)
 
     return formatted_results
-
-
-
-
