@@ -9,9 +9,8 @@
         <div style="margin-top: 25px;"></div>
     <div class="row">
 
-{% for diet in dietarytype %}
+{% for diet in dietarytype | sort %}
 
-<input type="hidden" id="get_recipes" value="{{ name }}">
 <!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
 
 

@@ -11,7 +11,9 @@
                     </div>
 
                 <div class="recipe-details">
-                            <h1>{{ recipe.recipeName }}</h1>
+                    <h1>{{ recipe.recipeName }}</h1>
+
+
                             <p> {{ recipe.recipeDescription }}</p>
                             <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
                             <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
@@ -31,7 +33,8 @@
                         <li> {{ step.stepDescription }}</li>
                         {% endfor %}
                     </ol>
-                </div>
+                      </div>
+
 
 
 
@@ -42,7 +45,7 @@
                  <div class="row">
                      {% for suggestion in randomrec %}
 
-                    <input type="hidden" id="get_recipes" value="{{ name }}">
+
                      <div class="col-lg-4">
                         <div class="recipe-card">
                             <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
