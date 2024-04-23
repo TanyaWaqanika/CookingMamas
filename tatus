@@ -1,0 +1,109 @@
+[33m4e1da34[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'paulene'
+[33mb3eba6e[m[33m ([m[1;32mpaulene[m[33m)[m about me images updated
+[33m1b6a109[m added back in about route
+[33m38e6b08[m tidy up code
+[33m28f8933[m added in comments
+[33m6ae0909[m Added a link to the success page that links to their recipe
+[33ma6714da[m[33m ([m[1;31morigin/submitrecipe_draftkh[m[33m)[m Created some views and added in a unit of none to the database
+[33ma4c8c2f[m removed unwanted function from data access
+[33m4eeed2f[m pulled from main
+[33mf107713[m Sorted all pages and they are now submitting to the database
+[33m816cb32[m changed search to allrecipes; added checkboxes
+[33m635627a[m resolved the dropdowns on the recipe page 3
+[33ma89203d[m remaining recipe images added and linked via database
+[33m9d82d07[m javascript issues when trying to get the data to submit for more than one row
+[33m7c2b4c2[m fixed basic filter
+[33md46be44[m Merge pull request #6 from daliesandmentlegen/filter
+[33m206115d[m[33m ([m[1;31morigin/filter[m[33m, [m[1;32mfilter[m[33m)[m Updated sql to fetch recipes based on dietary requirements
+[33m1b99ba5[m started filtered func
+[33ma84f9db[m added recipe cardsgit add .
+[33m31cef83[m started to sort out the database submission on each page
+[33mca52494[m pulled down from main
+[33m84b2408[m Updated get recipe title func in data access, updated search route and updated search page to get elements from the tuple
+[33m2b3d8ce[m updating routes
+[33m69fbaa3[m attempted db join
+[33m72d5dfd[m Merge pull request #5 from daliesandmentlegen/recipe-templatev4
+[33m1656810[m[33m ([m[1;31morigin/recipe-templatev4[m[33m)[m Added recipe landing page
+[33m6f2bf06[m Attempting to create pages that pass data from one page to the next so that once submitted on the final page we can pass those data items into the stored procedures to store in the db
+[33m2bf48d5[m Merge pull request #4 from daliesandmentlegen/recipe-templatev4
+[33md453d48[m Updated css in recipe.html
+[33maa76541[m Started to create the flow between pages and the routes to share data between the pages but still needs work
+[33m24ad7c3[m Merge branch 'main' of https://github.com/daliesandmentlegen/CookingMamas into submitrecipe_draftkh git commit -m "pulled down changes from main"
+[33mb3b70c4[m added buttons!
+[33m3570bed[m Added a comment on the hide button
+[33m219ee48[m Merge branch 'main' of https://github.com/daliesandmentlegen/CookingMamas into submitrecipe_draftkh git commit -m "fetched from main"
+[33m1b1ce59[m Added in steps and an unhide row potential solution to our js problem
+[33m66b1a9c[m cascaded meats
+[33mee34a3e[m fixed checkbox issue
+[33m94b0e22[m Pulled down from main
+[33maf6daa9[m merge paulene branch
+[33m6ba2b32[m Pulled from main
+[33m9a2f640[m Amends to style sheet
+[33m50b1fe5[m Accepted changes from the routes file
+[33m297a2cd[m Merge branch 'submitrecipe_draftkh' of https://github.com/daliesandmentlegen/CookingMamas into submitrecipe_draftkh git commit -m "message"
+[33m585b245[m tidied code
+[33m8c55a6f[m Dynamically populated all fields for user to input recipe, neatened code and modified add row button
+[33me6328bd[m Created success page - need to understand styling
+[33m0e04609[m Merge pull request #3 from daliesandmentlegen/recipe-templatev3
+[33m398df9d[m[33m ([m[1;31morigin/recipe-templatev3[m[33m, [m[1;32mrecipe-templatev3[m[33m)[m Merge branch 'main' into recipe-templatev3
+[33mdf7b626[m Rogue g on the routes file deleted
+[33m40d09fb[m Merge branch 'submitrecipe_draftkh' git commit -m "Merging in the latest submitrecipe work incl js file for the adding of a row, dynamic data in the form and the stored procedures for use when inserting the data"
+[33m2b4a80f[m Pulling down Paulene's changes from main to local main
+[33m1502a35[m Formatting change on data access and routes
+[33m07b2945[m updated recipe template to retrieve all necessary fields from db
+[33mce0f672[m Pulled from main
+[33mf6f6c45[m Created javascript for adding new row for the ingredients
+[33m359847c[m Merge branch 'paulene'
+[33m52ee648[m Added content to About Me page and images
+[33m232a826[m Working out the add row through javascript
+[33mf4b19a3[m Added in function to get the dietaryType from database so it can be presented in a template in the front end, also amended the template to incude more relevant fields.
+[33m70c47ee[m Included stored procedures for inserting data into each of the tables impacted by the submit recipe form
+[33m1ef181e[m Merge branch 'submitrecipe_draftkh' git commit -m "Commented out mock route in routes to stop error, commented out db connection in database access/ get recipe as not needed, updated database name"
+[33m2201581[m Merge branch 'main' of https://github.com/daliesandmentlegen/CookingMamas git commit -m "pull down changes from main"
+[33mf833d66[m Commented out mock route and updated password
+[33m4d6f3f3[m Updating from main
+[33me0ea25b[m Added mac password for mysql connector
+[33m04a62a0[m[33m ([m[1;31morigin/recipe-template[m[33m)[m Merge pull request #2 from daliesandmentlegen/cherina
+[33mb89f2e3[m[33m ([m[1;31morigin/cherina[m[33m, [m[1;32mcherina[m[33m)[m updated recipe template
+[33m3879f76[m added back in the href for submit recipe
+[33mf25d287[m added back in submit recipe href to the layout
+[33m156efb2[m removed residual conflict message
+[33m880b840[m pulled down nav and footer changes
+[33m2ed661f[m[33m ([m[1;31morigin/nav_and_foot[m[33m)[m added comment
+[33m2eac0de[m Updated the footer so that it no longer blocks content and updated the nav bar so that it is in bootstrap 5 and dropsdown when responsive.
+[33m923cba6[m[33m ([m[1;31morigin/image_database_creation[m[33m)[m Created image db in v4 and export v3
+[33mec1aff3[m Added in images db v4 and export file v3
+[33mfb467fe[m conflict resolution
+[33m4ba1956[m added git ignore file
+[33m13fdbd9[m added images for recipes
+[33md30f863[m images for recipes added
+[33m7161ef9[m version 3 of database and all sample data added
+[33mb268d1a[m Added images
+[33m468ad74[m Merge pull request #1 from daliesandmentlegen/cherina
+[33m43bec12[m added recipe template v1
+[33me219045[m resolving conflict
+[33mae10f99[m cleaned layout structure
+[33m287def3[m tested database table insertions
+[33mdcce85e[m Merge branch 'minahil_branch'
+[33me4dfce3[m v2 of database sql script and data export added
+[33m538725f[m commented code
+[33mc4db145[m Started forms, commented out footer as was effecting work, attempted to review code
+[33mee2e75e[m Merge branch 'main' of https://github.com/daliesandmentlegen/CookingMamas into submitrecipe_draftkh
+[33mb42b93e[m intial files pulled
+[33m01e7138[m updated table
+[33m7a31663[m tested db connection using show tables, success!
+[33m0ff93ad[m finished blue db tables
+[33m921ba26[m added database
+[33mde435ef[m added database draft
+[33mc0db91d[m made basic data access file
+[33mfacf234[m Looking at navigation bar to make it responsive
+[33m842ddca[m Updated template to try and get navigation bar to be responsive
+[33md7e0eef[m Added git ignore file
+[33ma642d1c[m remade project dir
+[33mb8fb065[m Delete Cooking_Draft directory
+[33m46edc86[m Delete requirements.txt
+[33md74f9d3[m Delete app.py
+[33mf0e3374[m Delete .gitignore
+[33m2780946[m Delete application directory
+[33m98fcb4f[m Made new draft project
+[33m84834ff[m Starter flask app with simple template, web pages and stylesheet
