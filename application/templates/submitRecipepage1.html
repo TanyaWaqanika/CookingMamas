@@ -6,7 +6,7 @@
         <div class="container">
             <section>
                 <div style="margin-top: 30px;"></div>
-                    <img src="../static/images/heartlogo.png" class="centre" width="100">
+                    <a href="/home"><img src="../static/images/heartlogo.png" class="centre" width="100"></a>
                 <h1>Add your own recipe!</h1>
                 <h3 id="central-text">Tell us about your recipe</h3>
                 <br>
@@ -37,11 +37,11 @@
 
                     <div class="row g-3 align-items-center">
                       <div class="col-auto">
-                          <label for="cuisine" class="col-form-label">What type of cuisine is it:</label>
+                          <label for="cuisine" class="col-form-label">What type of cuisine is it:</label><br>
 <!--                          the {brackets below} allow for iterating through the dietary types we returned through the stored proc-->
 <!--                          It creates the tick box and label for each type-->
 
-                          {% for cuisine in cuisinetype %}
+                          {% for cuisine in cuisinetype | sort %}
                           <div class="form-check form-check-inline">
                             <input name="cuisine" class="form-check-input" type="checkbox" value="{{ cuisine }}">
                             <label class="form-check-label" id="cuisine" for="cuisine">{{cuisine}}</label>

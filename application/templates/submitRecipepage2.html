@@ -4,9 +4,9 @@
  <main>
     <div class="container">
                 <section>
-                    <br>
-                    <h1>Add your own recipe!</h1>
-                    <br>
+                    <div style="margin-top: 30px;"></div>
+                    <a href="/home"><img src="../static/images/heartlogo.png" class="centre" width="100"></a>
+                <h1>Add your own recipe!</h1>
                     <br>
                     <h3 id="central-text">Is your recipe suitable for people and does it require any special tools?</h3>
                     <br>
@@ -15,15 +15,15 @@
                         <div class= 'error-message' id="message">
                             {{message}}
                         </div>
-                        <img src="static\images\cutevegetables.jpg" class="rounded mx-auto d-block" alt="Picture of fruit vegetables meat" style="width:600px;height:500px;">
+                            <img src="static\images\cutevegetables.jpg" class="rounded mx-auto d-block" alt="Picture of fruit vegetables meat" style="width:600px;height:500px;">
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
 
-                              <label for="dietary" class="col-form-label">Dietary requirements:  </label>
+                              <label for="dietary" class="col-form-label">Dietary requirements:  </label><br>
     <!--                          the {brackets below} allow for iterating through the dietary types we returned through the stored proc-->
     <!--                          It creates the tick box and label for each type-->
 
-                              {% for dietary in dietarytype %}
+                              {% for dietary in dietarytype|sort %}
                               <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="dietary"  type="checkbox" value="{{dietary}}">
                                 <label class="form-check-label" id="dietary"  for="dietary" >{{dietary}}</label>
@@ -36,9 +36,9 @@
 
                         <div class="row g-3 align-items-center">
                           <div class="col-auto">
-                              <label for="allergy" class="col-form-label">Allergy Type:  </label>
+                              <label for="allergy" class="col-form-label">Allergy Type:  </label><br>
 
-                              {% for allergy in allergytype %}
+                              {% for allergy in allergytype |sort %}
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" name="allergy" type="checkbox" value="{{allergy}}">
                                     <label class="form-check-label"  id="allergy"  for="allergy">{{allergy}}</label>
@@ -49,9 +49,9 @@
                         <br>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
-                                <label for="tool" class="col-form-label">Tools Required:  </label>
+                                <label for="tool" class="col-form-label">Tools Required:  </label><br>
 
-                              {% for tool in toolname %}
+                              {% for tool in toolname |sort %}
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" name="tool" type="checkbox" value="{{tool}}">
                                     <label class="form-check-label" id="tool"  for="tool">{{tool}}</label>
