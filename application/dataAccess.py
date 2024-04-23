@@ -104,6 +104,7 @@ def filter_by_dietary(selected_dietary):
         JOIN recipedietaryrequirement ON recipe.recipeId = recipedietaryrequirement.recipeId 
         LEFT JOIN image ON recipe.recipeID = image.recipeID 
         WHERE recipedietaryrequirement.dietaryID = %s
+        ORDER BY recipe.recipeName ASC
     """
     mycursor.execute(sql, (dietary_id,))
     recipes = mycursor.fetchall()
