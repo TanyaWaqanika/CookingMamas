@@ -1,25 +1,27 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
+<!-- back to top button -->
+
     <section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
-        <div class="container">
-            <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
-                <div class="image-container">
-                    <img src="/static/{{ recipe.imageSource }}">
-                </div>
+
+        <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
+                    <div class="image-container">
+                        <img src="/static/{{ recipe.imageSource }}">
+                    </div>
 
                 <div class="recipe-details">
-                    <h1>{{ recipe.recipeName }}</h1>
-                    <p> {{ recipe.recipeDescription }}</p>
-                    <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
-                    <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
-                    <p><strong>Preparation Time:</strong> {{ recipe.prepTime }}</p>
-                    <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
-                    <p><strong>Serving Size:</strong> {{ recipe.servingSize }}</p>
-                    <p><strong>Tool Required:</strong> {{ recipe.toolName }}</p>
-                    <h2>Ingredients</h2>
+                            <h1>{{ recipe.recipeName }}</h1>
+                            <p> {{ recipe.recipeDescription }}</p>
+                            <p><strong>Cuisine:</strong> {{ recipe.cuisine_type }}</p>
+                            <p><strong>Overall Duration:</strong> {{ recipe.overallDuration }}</p>
+                            <p><strong>Preparation Time:</strong> {{ recipe.prepTime }}</p>
+                            <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
+                            <p><strong>Serving Size:</strong> {{ recipe.servingSize }}</p>
+                            <p><strong>Tool Required:</strong> {{ recipe.toolName }}</p>
+                            <h2>Ingredients</h2>
                     <ul>
-                        {% for ingredient in recipe.ingredients %}
+                            {% for ingredient in recipe.ingredients %}
                             <li>{{ ingredient.ingredientName }} - {{ ingredient.quantity }} {{ ingredient.unitName }}</li>
                         {% endfor %}
                     </ul>
@@ -29,74 +31,35 @@
                         <li> {{ step.stepDescription }}</li>
                         {% endfor %}
                     </ol>
-        </div>
-
-        <h3>Still hungry? Why not check out <a href="/allrecipes">some other recipes?</a></h3>
-
-        <h1>Suggested Recipes</h1>
-        <div class="row">
-        {% for suggestion in randomrec %}
-
-        <input type="hidden" id="get_recipes" value="{{ name }}">
-<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
-
-
-    <div class="col-lg-4">
-                <div class="recipe-card">
-                    <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ suggestion [1] }}</h5>
-                        <p class="card-text">{{ suggestion [2] }}</p>
-                        <a href="/recipe/{{ suggestion [0] }} " class="button-value">View Recipe</a>
-                    </div>
                 </div>
-            </div>
 
 
-{% endfor %}
+
+
+                <h3>Still hungry? Why not check out <a href="/allrecipes">some other recipes?</a></h3>
+
+                 <h1>Suggested Recipes</h1>
+                 <div class="row">
+                     {% for suggestion in randomrec %}
+
+                    <input type="hidden" id="get_recipes" value="{{ name }}">
+                     <div class="col-lg-4">
+                        <div class="recipe-card">
+                            <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ suggestion [1] }}</h5>
+                                <p class="card-text">{{ suggestion [2] }}</p>
+                                <a href="/recipe/{{ suggestion [0] }} " class="button-value">View Recipe</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% endfor %}
 </div>
-        <!--
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="recipe-card">
-                    <img src="/static/images/CacioePepe.png" class="recipe-card-img-top" alt="Suggested Recipe 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Cacio e pepe</h5>
-                        <p class="card-text">Whip up a simple cacio e pepe for a speedy lunch. With four simple
-                            ingredients – spaghetti, pepper, parmesan and butter – this is a storecupboard favourite.</p>
-                        <a href="/recipe/1" class="button-value">View Recipe</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="recipe-card">
-                    <img src="/static/images/Shakshuka-Recipe-The-Mediterranean-Dish-100.jpg" class="recipe-card-img-top"
-                         alt="Suggested Recipe 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Shakshuka</h5>
-                        <p class="card-text">A North African dish, said to have originated in Tunisia, shakshuka,
-                            ponounced Shak-SHOO-kah. Fun fact, the origins of the word shakshuka comes from the Arabic
-                            for "all mixed up" or "shaken."</p>
-                        <a href="/recipe/2" class="button-value">View Recipe</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="recipe-card">
-                    <img src="/static/images/datemilkshake.png" class="recipe-card-img-top" alt="Suggested Recipe 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Dates milkshake</h5>
-                        <p class="card-text">This date shake is naturally sweet, filling, and a delightful way to start
-                            your day or enjoy as a snack or dessert. Cheers to wholesome indulgence!.</p>
-                        <a href="/recipe/11" class="button-value">View Recipe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
     </div>
-         </div>
+
     </section>
 
 {% endblock %}
