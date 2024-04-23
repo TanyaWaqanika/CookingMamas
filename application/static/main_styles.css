@@ -207,12 +207,15 @@ color: #CCCFFB;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
+    margin-bottom: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 700px; /* Ensure cards have the same height */
 }
 
 .recipe-card-img-top {
     border-top-left-radius: 8px;
+
+    display: inline-block;
     height: 60%; /* Set the image height to 60% of the card height */
     object-fit: cover; /* Ensure the image covers the container */
 }
@@ -249,3 +252,4 @@ font-family: lemon;
 .nav-item{
 font-family: lemon;
 }
+

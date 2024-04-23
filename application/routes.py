@@ -20,22 +20,21 @@ cursor = db.cursor()
 @app.route('/')
 @app.route('/home')
 def home():
-    # veganFilter = filter_by_dietary("Vegan")
-
-    return render_template('home.html', title='Home') # veganFilter=veganFilter)
+    randomrec = get_random_recipes()
+    return render_template('home.html', title='Home', randomrec=randomrec)
 
 
 @app.route('/about/<name>')
 @app.route('/about')
 def about(name):
-    return render_template('about.html', name=name.capitalize(), colour=['red', 'yellow', 'green'])
+    return render_template('about.html', name=name.capitalize(), title='About')
 
 
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipes = get_recipe_by_id(recipe_id)
     randomrec = get_random_recipes()
-    return render_template('recipe.html', recipe=recipes, randomrec=randomrec)
+    return render_template('recipe.html', recipe=recipes, randomrec=randomrec, title='Recipe')
 
 
 # TO DO Create the route that will help populate the options for the database form
@@ -72,7 +71,7 @@ def submitrecipepage1():
         except mysql.connector.Error as err:
             print("Error calling stored procedure: {}".format(err))
         return redirect(url_for('submitrecipepage2'))
-    return render_template('submitRecipepage1.html', title='Recipe', cuisinetype=cuisinetype, durationdata=durationdata)
+    return render_template('submitRecipepage1.html', title='Submit', cuisinetype=cuisinetype, durationdata=durationdata)
 
 
 # the sessions are meant to save the data submitted on the form page so that when we get to the end of the form we can then take that data and use it
@@ -94,7 +93,7 @@ def submitrecipepage2():
         cursor.callproc('insert_tool_v1', (toolname,))
         db.commit()  # If autocommit is disabled
         return redirect(url_for('submitrecipepage3'))
-    return render_template('submitRecipepage2.html', title='Recipe', dietarytype=dietarytype, allergytype=allergytype,
+    return render_template('submitRecipepage2.html', title='Submit', dietarytype=dietarytype, allergytype=allergytype,
                            toolname=toolname)
 
 
@@ -127,7 +126,7 @@ def submitrecipepage3():
             cursor.callproc('insert_ingredients_v1', args)
             db.commit()
         return redirect(url_for('submitrecipepage4'))
-    return render_template('submitRecipepage3.html', title='Recipe', ingredientname=ingredientname, unitname=unitname)
+    return render_template('submitRecipepage3.html', title='Submit', ingredientname=ingredientname, unitname=unitname)
 
 
 # page 4 for steps
@@ -159,7 +158,7 @@ def submitrecipepage4():
             cursor.callproc('insert_steps_v1', args)
             db.commit()
         return redirect(url_for('successsubmit'))
-    return render_template('submitRecipepage4.html', title='Recipe')
+    return render_template('submitRecipepage4.html', title='Submit')
 
 
 @app.route('/submitsuccess')
@@ -177,10 +176,8 @@ def allrecipes():
     ingredientname = get_ingredient_names()
     dietarytype = get_dietary_types()
 
-    if request.method == 'POST':
-        request.form.getlist('glutenType')
-        return filter_by_dietary("Gluten Free")
-    return render_template('allrecipes.html', recipename=recipename, ingredientname=ingredientname, dietarytype=dietarytype)
+    return render_template('allrecipes.html', title='All Recipes', recipename=recipename, ingredientname=ingredientname,
+                           dietarytype=dietarytype)
 
 
 @app.route('/submitsuccess')
@@ -197,6 +194,27 @@ def recipe_landing():
 @app.route('/glutenfree', methods=['GET', 'POST'])
 def glutenfree():
     dietarytype = filter_by_dietary('Gluten free')
-    
-    return render_template('glutenfree.html', dietarytype=dietarytype)
+    return render_template('glutenfree.html', dietarytype=dietarytype, title='Gluten Free')
 
+
+@app.route('/vegan', methods=['GET', 'POST'])
+def vegan():
+    dietarytype = filter_by_dietary('Vegan')
+    return render_template('vegan.html', dietarytype=dietarytype, title='Vegan')
+
+
+@app.route('/vegetarian', methods=['GET', 'POST'])
+def vegetarian():
+    dietarytype = filter_by_dietary('Vegetarian')
+    return render_template('vegetarian.html', dietarytype=dietarytype, title='Vegetarian')
+
+
+@app.route('/halal', methods=['GET', 'POST'])
+def halal():
+    dietarytype = filter_by_dietary('Halal')
+    return render_template('halal.html', dietarytype=dietarytype, title='Halal')
+
+@app.route('/pescatarian', methods=['GET', 'POST'])
+def pescatarian():
+    dietarytype = filter_by_dietary('Pescatarian')
+    return render_template('pescatarian.html', dietarytype=dietarytype, title='Pescatarian')

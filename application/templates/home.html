@@ -6,78 +6,86 @@
 <!-- -->
 
 <!-- Option/Filter card block -->
-<div class="row mt-4 g-1 px-4 mb-5">
-  <div class="col-12">
-    <h2>Vegan Recipes</h2>
 
-    <ul>
-      {% for veganFilter in veganFilter %}
-        <li>{{ veganFilter }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-
-<!-- Meat block -->
+<!-- Gluten Free -->
 
 <div class="row mt-4 g-1 px-4 mb-5"> <!-- arranges cards in rows with spacing -->
+
+
 <div class="col-6 col-md-4 col-xl-2"> <!-- changes width of containers/cards; boostrap responsive -->
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <!-- creates cards and centres contents -->
     <img src="../static/images/meat_set.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/login">Meat</a></span> <!-- text and hyperlink to relevant pages -->
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/glutenfree">Gluten Free</a></span> <!-- text and hyperlink to relevant pages -->
     </div>
   </div>
 </div>
 
 <!-- Option/Filter card blocks; note these cards don't have a text hyperlink -->
 
-  <!-- Fruits card -->
+  <!-- Vegan -->
 
 <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/fruits_basket.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Fruits</span>
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/vegan">Vegan</a></span>
     </div>
   </div>
 </div>
 
-  <!-- Veg card -->
+  <!-- Vegetarian -->
 
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/vegBouquet.png" width="95">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Vegetables</span>
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/vegetarian">Vegetarian</a></span>
     </div>
   </div>
 </div>
 
-  <!-- Dairy card -->
+  <!-- Halal -->
 
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/milk_pack.png" width="90">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Dairy</span>
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/halal">Halal</a></span>
     </div>
   </div>
 </div>
 
-  <!-- Grains card -->
+  <!-- Pescatarian card -->
 
   <div class="col-6 col-md-4 col-xl-2">
   <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/wheat.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Grains</span>
-    </div>
-  </div>
-</div>
-
-  <!-- herbs and spices card -->
-
-  <div class="col-6 col-md-4 col-xl-2">
-  <div class="card-inner p-3 d-flex flex-column align-items-center justify-content-center rounded display-6 p-5"> <img src="../static/images/meat_set.png" width="100">
-    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary">Herbs & Spices</span>
+    <div class="text-center mg-text"> <span class="fs-7 text-body-secondary"><a href="/pescatarian">Pescatarian</a></span>
     </div>
   </div>
 </div>
 
 </div>
 
+<section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
+  <div class="container">
 
+        <h1>Try A Bite</h1>
+        <div class="row">
+        {% for suggestion in randomrec %}
+
+        <input type="hidden" id="get_recipes" value="{{ name }}">
+<!--get recipe title gets a list of tuples so in order to populate the site you need to access each element within the tuple -->
+
+
+    <div class="col-lg-4">
+                <div class="recipe-card">
+                    <img src="/static/{{ suggestion [3] }}" class="recipe-card-img-top" alt="Suggested Recipe 1">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ suggestion [1] }}</h5>
+                        <p class="card-text">{{ suggestion [2] }}</p>
+                        <a href="/recipe/{{ suggestion [0] }} " class="button-value">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+
+{% endfor %}
+</div>
+  </div>
+  </section>
 <!-- end of unique page content -->
 {% endblock %}

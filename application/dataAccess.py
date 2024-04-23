@@ -169,30 +169,6 @@ def get_random_recipes():
 print(get_random_recipes())
 
 
-
-# print(get_recipe_title())
-
-
-# removed this function because your function above already gets the description
-# commented it out in case it is used anywhere else but think you're ok with what you've got above
-# def get_recipe_desc():
-#     cursor = recipedb.cursor()
-#     sql = "SELECT recipeDescription from recipe"
-#     cursor.execute(sql)
-#     recipe_desc = [row[0] for row in cursor.fetchall()]
-#     cursor.close()  # Close the cursor
-#     return recipe_desc
-
-# def search():
-#    cursor = recipedb.cursor()
-#   sql = "SELECT * from recipe where name = %s"
-#    cursor.executemany(sql, request.form['search'])
-#    results = cursor.fetchall()
-#    return results
-
-
-# print(search())
-
 # function to get all the dietaryType from the sql database so we can present on the front end
 def get_dietary_types():
     cursor = recipedb.cursor()
