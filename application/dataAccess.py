@@ -139,8 +139,6 @@ def get_diet_req():
     return diet_req
 
 
-print(get_diet_req())
-
 
 def get_random_recipes():
     cursor = recipedb.cursor()
@@ -154,9 +152,6 @@ def get_random_recipes():
     print("Total number of rows in table: ", cursor.rowcount)
     cursor.close()  # Close the cursor
     return random_recipe
-
-
-print(get_random_recipes())
 
 
 # function to get all the dietaryType from the sql database so we can present on the front end
