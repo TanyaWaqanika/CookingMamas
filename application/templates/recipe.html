@@ -3,14 +3,14 @@
 {% block body_content %}
 <!-- back to top button -->
 
-    <section class="p-3 p-md-4 p-xl-5"> <!-- centres login card on page-->
+    <section class="p-3 p-md-4 p-xl-5" style="max-width:1800px; margin: 0 auto"> <!-- centres login card on page-->
 
         <div class="card border-light-subtle shadow-sm" style="background-color: #fff">
                     <div class="image-container">
                         <img src="/static/{{ recipe.imageSource }}">
                     </div>
 
-                <div class="recipe-details">
+                <div class="recipe-details" style="padding:2rem">
                     <h1>{{ recipe.recipeName }}</h1>
 
 
@@ -42,7 +42,7 @@
                 <h3>Still hungry? Why not check out <a href="/allrecipes">some other recipes?</a></h3>
 
                  <h1>Suggested Recipes</h1>
-                 <div class="row">
+                 <div class="row" style="padding:2rem">
                      {% for suggestion in randomrec %}
 
 
