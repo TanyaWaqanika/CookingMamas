@@ -26,6 +26,11 @@ h1 {
     text-align: center;
  }
 
+h4 {
+font-family: lemon;
+text-align: left;
+}
+
 .card{
 
   border: none;
