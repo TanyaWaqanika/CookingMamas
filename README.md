@@ -1,4 +1,4 @@
-<h1>Budget Bites🍽️</h1>
+<h1>Budget Bites 🍽️</h1>
 We are the CookingMamas and welcome to Budget Bites! This is a web application designed to cater to the culinary needs of the "gen Z" demographic, offering a platform where users can easily find recipes that suit their dietary requirements, budget, and adventurous taste. 
     Users can actively engage with the platform by adding their own recipes, contributing to a community of food enthusiasts!
 
@@ -34,7 +34,7 @@ We welcome contributions from the community to help improve Budget Bites and mak
 <h2>Feedback and Support</h2>
 If you have any feedback, suggestions, or encounter any issues while using Budget Bites, please don't hesitate to reach out. You can submit an issue on GitHub or contact us directly via email.
 
-Happy cooking with Budget Bites! 🍽️🎉
+Happy cooking with Budget Bites! 🍽️ 🎉
 
 
 
