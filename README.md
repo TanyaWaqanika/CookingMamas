@@ -8,15 +8,12 @@ To use this repository and run the Budget Bites web application locally, follow 
 <h3>1. Download the Database:</h3>
 Before running the application, you need to download the database and import the provided SQL file data_export_v7.sql. This file contains all the necessary data for the application to function properly.
 
-<h3>2. Import Stored Procedures:</h3>
-Additionally, ensure that you import all seven stored procedures required for the application to perform various database operations seamlessly.
-
-<h3>3. Clone the Repository:</h3>
+<h3>2. Clone the Repository:</h3>
 Clone this Git repository to your local machine using the following command
 <pre>git clone https://github.com/your-username/CookingMamas.git </pre>
-<h3>4. Run the Application:</h3>
+<h3>3. Run the Application:</h3>
 After cloning the repository and setting up the database, navigate to the project directory and run the app.py file to start the Budget Bites web application.
-<h3>5. Access the Application:</h3>
+<h3>4. Access the Application:</h3>
 Once the application is running locally, you can access it by opening your web browser and navigating to http://localhost:5000.
 
 <h2>Project Overview</h2>
