@@ -1,6 +1,7 @@
 <h1>Budget Bites🍽️</h1>
-Welcome to Budget Bites! This is a web application designed to cater to the culinary needs of the "gen Z" demographic, offering a platform where users can easily find recipes that suit their dietary requirements, budget, and adventurous taste. 
+We are the CookingMamas and welcome to Budget Bites! This is a web application designed to cater to the culinary needs of the "gen Z" demographic, offering a platform where users can easily find recipes that suit their dietary requirements, budget, and adventurous taste. 
     Users can actively engage with the platform by adding their own recipes, contributing to a community of food enthusiasts!
+
 <h2>Getting Started</h2>
 To use this repository and run the Budget Bites web application locally, follow the steps below:
 
@@ -23,7 +24,9 @@ Budget Bites aims to provide an intuitive and user-friendly interface for users 
 
 - Recipe Filtering: Users can easily filter recipes based on their dietary requirements and budget, ensuring that they find recipes tailored to their specific needs.
 - User Interaction: Budget Bites encourages user engagement by allowing them to add their own recipes to the platform. This fosters a sense of community and enables users to share their culinary creations with others.
-- Gen Z Targeting: The platform is specifically designed to resonate with the "gen Z" demographic, offering a modern and dynamic user experience that aligns with their preferences and lifestyle.
+<h2>Authors</h2>
+Cherina Chung, Katy Hatch, Minahil Khan, Tanya Waqanika, Paulene Bandoy
+
 <h2>Contributing</h2>
 We welcome contributions from the community to help improve Budget Bites and make it even more valuable for users. If you'd like to contribute, please follow these guidelines:
 
