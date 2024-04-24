@@ -20,9 +20,9 @@ After cloning the repository and setting up the database, navigate to the projec
 Once the application is running locally, you can access it by opening your web browser and navigating to http://localhost:5000.
 
 <h2>Project Overview</h2>
-Budget Bites aims to provide an intuitive and user-friendly interface for users to discover recipes based on their dietary preferences and budget constraints. Here's a brief overview of the key features:
+Budget Bites aims to provide an intuitive and user-friendly interface for users to discover recipes based on their dietary preferences. Here's a brief overview of the key features:
 
-- Recipe Filtering: Users can easily filter recipes based on their dietary requirements and budget, ensuring that they find recipes tailored to their specific needs.
+- Recipe Filtering: Users can easily filter recipes based on their dietary requirements, ensuring that they find recipes tailored to their specific needs.
 - User Interaction: Budget Bites encourages user engagement by allowing them to add their own recipes to the platform. This fosters a sense of community and enables users to share their culinary creations with others.
 <h2>Authors</h2>
 Cherina Chung, Katy Hatch, Minahil Khan, Tanya Waqanika, Paulene Bandoy
